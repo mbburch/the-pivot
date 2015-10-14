@@ -1,7 +1,7 @@
 ---
 
 [![Stories in Ready](https://badge.waffle.io/mbburch/the-pivot.png?label=Ready)](http://waffle.io/mbburch/the-pivot)
-
+[![Throughput Graph](https://graphs.waffle.io/mbburch/the-pivot/throughput.svg)](https://waffle.io/mbburch/the-pivot/metrics)
 ##### [Mimi Schatz](https://github.com/mcschatz), [MB Burch](https://github.com/mbburch), [Adam Jensen](https://github.com/adamki)
 
 The Pivot is the first project in Module 3 at the Turing School. Each group are given a legacy project to work with. We started with a E-commerce site called Denvestments, a micro-lending site. We are pivoting from [Denvestments](https://github.com/russelleh/denvestments).
