@@ -1,0 +1,9 @@
+<div class="container">
+  <p class="lead"><%= link_to "Create Loan", new_admin_loan_path %></p>
+  <div class="row loans">
+    <% @loans.each do |loan| %>
+      <%= render partial: "/layouts/tiny_loan",
+                locals: { loan: loan, mode: :edit, path: request.path } %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<nav class="col-md-12 navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Denvestments</a>
+    <ul class="nav navbar-nav">
+      <li><a href="/loans">Loans</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="false">Categories<span class="caret">
+        </span>
+        </a>
+        <ul class="dropdown-menu">
+          <% category_list.each do |category| %>
+          <li><a href="<%= category_path(category) %>"><%= category.name %></a></li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <%= render partial: "layouts/login" %>
+      <li><a href="/cart">Loans in Cart: <%= session[:cart].values.sum if session[:cart] %></a></li>
+      <li><a id="cart" href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+    });
+</script>

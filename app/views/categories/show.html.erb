@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="lead header"><%= @category.name %></h1>
+      <div class="row loans">
+        <% @loans.each do |loan| %>
+          <%= render partial: "/layouts/tiny_loan",
+            locals: { loan: loan, mode: :add, path: request.path } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <%= render partial: "layouts/flash" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Loan Title</th>
+        <th>Quantity Purchased</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @loan_quantities.each do |loan, quantity| %>
+        <tr>
+          <td><%= loan.title %></td>
+          <td><%= quantity %></td>
+          <td><%= number_to_currency(quantity * loan.price) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="col-md-6 col-md-offset-3 well well-lg">
+    <dl class="dl-horizontal lead">
+      <dt>Name:<dt>
+      <dd><%= @user.full_name %></dd>
+      <dt>Address:</dt>
+      <dd><%= @user.address %></dd>
+      <dt>Order Date:</dt>
+      <dd><%= @order.date %></dd>
+      <dt>Status:</dt>
+      <dd><%= @order.status %></dd>
+      <dt>Total:</dt>
+      <dd><%= number_to_currency(@order.total_cost) %></dd>
+    </dl>
+  </div>
+</div>
