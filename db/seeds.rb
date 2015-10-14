@@ -5,7 +5,7 @@ category3 = Category.create(name: "Transportation")
 Loan.create(title: "Urban Bees",
             description: "Buy local Denver honey.",
             price: 50,
-            avatar: open("https://s3.amazonaws.com/mb-the-pivot/assets/Fork-Beekeeping.jpg"),
+            avatar: open("https://s3.amazonaws.com/mb-the-pivot/Fork-Beekeeping.jpg"),
             category: category2)
 
 Loan.create(title: "Kitten Mittens",
@@ -17,7 +17,7 @@ Loan.create(title: "Kitten Mittens",
 Loan.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
             price: 100,
-            avatar: open("https://s3.amazonaws.com/mb-the-pivot/assets/Hilltop_Bicycles_Summit_NJ.JPG"),
+            avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
             category: category3)
 
 User.create(username: "alice",
