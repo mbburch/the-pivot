@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :bids, only: [:new, :create]
-
   resources :orders, only: [:new, :create, :show]
+  resources :stores, only: [:index]
 end
