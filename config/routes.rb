@@ -20,5 +20,7 @@ Rails.application.routes.draw do
     put "/edit", to: "admins#update"
   end
 
+  resources :bids, only: [:new, :create]
+
   resources :orders, only: [:new, :create, :show]
 end
