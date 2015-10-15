@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/register", to: "users#new"
   post "/register", to: "users#create"
   delete "/cart_items/:id", to: "cart_items#destroy"
+
   namespace :admin do
     resources :loans, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:update]
@@ -20,7 +21,15 @@ Rails.application.routes.draw do
     put "/edit", to: "admins#update"
   end
 
+  namespace :seller do
+    resources :loans, only: [:index, :new, :create, :edit, :update]
+    resources :orders, only: [:update]
+    get "/dashboard", to: "seller#show"
+    get "/edit", to: "seller#edit"
+    put "/edit", to: "seller#update"
+  end
+
   resources :bids, only: [:new, :create]
   resources :orders, only: [:new, :create, :show]
-  resources :stores, only: [:index]
+
 end
