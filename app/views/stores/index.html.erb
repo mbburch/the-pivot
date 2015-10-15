@@ -1,4 +1,6 @@
-<% @stores.each do |store| %>
-  <%= store.name %>
-  <%= store.owner %>
-<% end %>
+<ul>
+  <% @stores.each do |store| %>
+    <li><%= store.title %>
+    | <%= store.user.full_name %></li>
+  <% end %>
+</ul>
