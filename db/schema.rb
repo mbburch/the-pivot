@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(version: 20151015174353) do
     t.datetime "avatar_updated_at"
     t.integer  "category_id"
     t.string   "status"
+    t.integer  "store_id"
   end
 
   add_index "loans", ["category_id"], name: "index_loans_on_category_id", using: :btree
+  add_index "loans", ["store_id"], name: "index_loans_on_store_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "loan_id"
@@ -78,4 +80,5 @@ ActiveRecord::Schema.define(version: 20151015174353) do
   end
 
   add_foreign_key "loans", "categories"
+  add_foreign_key "loans", "stores"
 end

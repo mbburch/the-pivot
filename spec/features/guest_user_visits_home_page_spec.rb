@@ -10,5 +10,4 @@ feature "user visits home page" do
     expect(page).to have_content("other test title")
     expect(current_path).to eq(root_path)
   end
-
 end
