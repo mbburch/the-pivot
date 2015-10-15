@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "User checks out cart" do
-  scenario "with valid inputs" do
+  xscenario "with valid inputs" do
     User.create(username: "Chris",
                 password: "password",
                 full_name: "Chris C",
