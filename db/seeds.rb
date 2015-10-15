@@ -14,22 +14,8 @@ Loan.create(title: "Kitten Mittens",
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/3_Kittens_Playing_in_the_Garden.jpg"),
             category: category1)
 
-Loan.create(title: "Bike Bus",
-            description: "We'll bring our shop to you.",
-            price: 100,
-            avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
-            category: category3)
-
-user = User.create(username: "alice",
-            password: "password",
-            full_name: "Alice Jones",
-            address: "1500 Blake St., Denver, CO 80205")
-
-User.create(username: "admin",
-            password: "password",
-            full_name: "Admin Adminerstein",
-            address: "123 Admin Blvd, Admintown, AD",
-            role: 1)
+Store.create(title: "Bob's Big Boys", user_id: user.id)
+Store.create(title: "Bob's Big Dogs", user_id: user.id)
 
 Order.create(user_id: 1,
              status: "Ordered",
@@ -41,6 +27,22 @@ OrderItem.create(loan_id: 1, order_id: 1, quantity: 3)
 OrderItem.create(loan_id: 2, order_id: 1, quantity: 1)
 OrderItem.create(loan_id: 3, order_id: 1, quantity: 2)
 
-Store.create(title: "Adam", user_id: user.id)
-Store.create(title: "Bob's Big Boys", user_id: user.id)
-Store.create(title: "Bob's Big Dogs", user_id: user.id)
+User.create(username: "admin",
+            password: "password",
+            full_name: "Admin Adminerstein",
+            address: "123 Admin Blvd, Admintown, AD",
+            role: 1)
+
+user = User.create(username: "alice",
+            password: "password",
+            full_name: "Alice Jones",
+            address: "1500 Blake St., Denver, CO 80205")
+
+store = Store.create(title: "Adam", user_id: user.id)
+
+loan = Loan.create(title: "Bike Bus",
+            description: "We'll bring our shop to you.",
+            price: 100,
+            avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
+            category: category3,
+            store_id: store.id)

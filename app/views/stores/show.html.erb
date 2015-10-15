@@ -1,0 +1,7 @@
+<ul>
+  <li><%= @store.title %> ||
+  <%= @store.user.full_name %></li>
+  <li><% @store.loans.each do |loan| %>
+    <%= link_to loan.description, loan_path(loan) %></li>
+  <% end %>
+</ul>
