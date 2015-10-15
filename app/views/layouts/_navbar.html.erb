@@ -8,6 +8,7 @@
         aria-haspopup="true" aria-expanded="false">Categories<span class="caret">
         </span>
         </a>
+        <li><a href="/stores">Browse Stores</a></li>
         <ul class="dropdown-menu">
           <% category_list.each do |category| %>
           <li><a href="<%= category_path(category) %>"><%= category.name %></a></li>
