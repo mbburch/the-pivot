@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "welcome#index"
+  root to: "loans#index"
   resources :loans, only: [:index, :show]
   resources :categories, only: [:show]
   post "/cart_items", to: "cart_items#create"
