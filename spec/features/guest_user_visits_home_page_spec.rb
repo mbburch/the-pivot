@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature "guest user visits home page" do
+feature "user visits home page" do
   include_context('features')
 
-  scenario "un-registered user" do
+  scenario "as a guest user" do
     visit '/'
     expect(page).to have_content("BidDay")
     expect(page).to have_content("test title")
