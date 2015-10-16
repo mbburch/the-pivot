@@ -1,10 +1,10 @@
 require "rails_helper"
 
-feature "visitor can view loans by category" do
+feature "visitor can view items by category" do
   include_context("features")
 
   scenario "from the navbar menu" do
-    visit "/loans"
+    visit "/items"
     click_on "Categories"
     click_on "Test Category"
 
@@ -13,7 +13,7 @@ feature "visitor can view loans by category" do
     within(".header") do
       expect(page).to have_content("Test Category")
     end
-    within(".loans") do
+    within(".items") do
       expect(page).to have_content("test title")
       expect(page).to have_content("test description")
       expect(page).to have_content("$50.00")
@@ -27,7 +27,7 @@ feature "visitor can view loans by category" do
     within(".header") do
       expect(page).to have_content("Test Category")
     end
-    within(".loans") do
+    within(".items") do
       expect(page).to have_content("test title")
       expect(page).to have_content("test description")
       expect(page).to have_content("$50.00")

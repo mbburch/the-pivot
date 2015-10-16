@@ -7,18 +7,18 @@ feature "User checks out cart" do
                 full_name: "Chris C",
                 address: "1510 Blake")
     category = Category.create(name: "Cat Stuff")
-    Loan.create(title: "Kitten Mittens",
+    Item.create(title: "Kitten Mittens",
                 description: "Everyone needs them!",
                 price: 100.5,
                 category_id: category.id)
-    Loan.create(title: "Kitten Socks",
+    Item.create(title: "Kitten Socks",
                 description: "For your feet!",
                 price: 50.0,
                 category_id: category.id)
-    visit "/loans"
+    visit "/items"
     click_link("Kitten Mittens")
     click_button("Add to Cart")
-    visit "/loans"
+    visit "/items"
     click_link("Kitten Socks")
     click_button("Add to Cart")
     visit(login_path)
@@ -38,7 +38,7 @@ feature "User checks out cart" do
     end
 
     expect(current_path).to eq order_path(Order.last.id)
-    expect(page).to have_content("Loans in Cart: 0")
+    expect(page).to have_content("Items in Cart: 0")
     expect(page).to have_content("Chris C")
     expect(page).to have_content("1510 Blake")
     expect(page).to have_content(Order.last.date)
@@ -57,12 +57,12 @@ feature "User checks out cart" do
                 full_name: "Chris C",
                 address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
-    Loan.create(title: "Kitten Mittens",
+    Item.create(title: "Kitten Mittens",
                 description: "Everyone needs them!",
                 price: 100.5,
                 category_id: category.id)
-    visit "/loans"
-    within(".loans") do
+    visit "/items"
+    within(".items") do
       click_button("Add to Cart")
     end
     page.find("#cart").click
@@ -84,7 +84,7 @@ feature "User checks out cart" do
       click_button("Submit Order")
     end
     expect(current_path).to eq order_path(Order.last.id)
-    expect(page).to have_content("Loans in Cart: 0")
+    expect(page).to have_content("Items in Cart: 0")
     expect(page).to have_content("Order successful!")
     expect(page).to have_content("Kitten Mittens")
     expect(page).to have_content("1")
@@ -97,7 +97,7 @@ feature "User checks out cart" do
                        full_name: "Chris C",
                        address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
-    loan = Loan.create(title: "Kitten Mittens",
+    item = Item.create(title: "Kitten Mittens",
                        description: "Everyone needs them!",
                        price: 100.5,
                        category_id: category.id)
@@ -106,7 +106,7 @@ feature "User checks out cart" do
                          card_expiration: "09/10",
                          total_cost: 100.50,
                          status: "Ordered")
-    OrderItem.create(loan_id: loan.id,
+    OrderItem.create(item_id: item.id,
                      quantity: 1,
                      order_id: order.id)
     visit order_path(order.id)
@@ -120,7 +120,7 @@ feature "User checks out cart" do
                        full_name: "Chris C",
                        address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
-    loan = Loan.create(title: "Kitten Mittens",
+    item = Item.create(title: "Kitten Mittens",
                        description: "Everyone needs them!",
                        price: 100.5,
                        category_id: category.id)
@@ -129,7 +129,7 @@ feature "User checks out cart" do
                          card_expiration: "09/10",
                          total_cost: 100.50,
                          status: "Ordered")
-    OrderItem.create(loan_id: loan.id,
+    OrderItem.create(item_id: item.id,
                      quantity: 1,
                      order_id: order.id)
     User.create(username: "Chris",
@@ -151,7 +151,7 @@ feature "User checks out cart" do
                        full_name: "Chris C",
                        address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
-    loan = Loan.create(title: "Kitten Mittens",
+    item = Item.create(title: "Kitten Mittens",
                        description: "Everyone needs them!",
                        price: 100.5,
                        category_id: category.id)
@@ -160,7 +160,7 @@ feature "User checks out cart" do
                          card_expiration: "09/10",
                          total_cost: 100.50,
                          status: "Ordered")
-    OrderItem.create(loan_id: loan.id,
+    OrderItem.create(item_id: item.id,
                      quantity: 1,
                      order_id: order.id)
     User.create(username: "Chris",
@@ -175,7 +175,7 @@ feature "User checks out cart" do
     visit order_path(order.id)
 
     expect(current_path).to eq order_path(Order.last.id)
-    expect(page).to have_content("Loans in Cart:")
+    expect(page).to have_content("Items in Cart:")
     expect(page).to have_content("Kitten Mittens")
     expect(page).to have_content("1")
     expect(page).to have_content("Total: $100.50")

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="lead header">Loans</h1>
+      <h1 class="lead header">Items</h1>
     </div>
     <div class="carousel-holder">
       <div class="col-md-12">
@@ -32,10 +32,10 @@
       </div>
     </div>
   </div>
-  <div class="row loans">
-    <% @loans.each do |loan| %>
-      <%= render partial: "/layouts/tiny_loan",
-                locals: { loan: loan, mode: :add, path: request.path } %>
+  <div class="row items">
+    <% @items.each do |item| %>
+      <%= render partial: "/layouts/tiny_item",
+                locals: { item: item, mode: :add, path: request.path } %>
     <% end %>
   </div>
 </div>

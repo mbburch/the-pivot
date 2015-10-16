@@ -8,7 +8,6 @@
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
-#
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20151015173839) do
@@ -25,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151015173839) do
     t.string "name"
   end
 
-  create_table "loans", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.decimal  "price"
@@ -40,11 +39,11 @@ ActiveRecord::Schema.define(version: 20151015173839) do
     t.integer  "store_id"
   end
 
-  add_index "loans", ["category_id"], name: "index_loans_on_category_id", using: :btree
-  add_index "loans", ["store_id"], name: "index_loans_on_store_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["store_id"], name: "index_items_on_store_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
-    t.integer  "loan_id"
+    t.integer  "item_id"
     t.integer  "order_id"
     t.integer  "quantity"
     t.datetime "created_at", null: false
@@ -78,6 +77,6 @@ ActiveRecord::Schema.define(version: 20151015173839) do
     t.integer  "role",            default: 0
   end
 
-  add_foreign_key "loans", "categories"
-  add_foreign_key "loans", "stores"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "stores"
 end

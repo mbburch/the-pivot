@@ -1,5 +1,5 @@
-class ChangeLoanPriceToDecimal < ActiveRecord::Migration
+class ChangeItemPriceToDecimal < ActiveRecord::Migration
   def change
-    change_column :loans, :price, :decimal
+    change_column :items, :price, :decimal
   end
 end

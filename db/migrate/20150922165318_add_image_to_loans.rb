@@ -1,5 +1,5 @@
-class AddImageToLoans < ActiveRecord::Migration
+class AddImageToItems < ActiveRecord::Migration
   def change
-    add_attachment :loans, :avatar
+    add_attachment :items, :avatar
   end
 end

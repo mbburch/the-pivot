@@ -10,19 +10,19 @@
       <% @items.each do |item| %>
         <div class="row well well-lg">
           <dl class="dl-horizontal">
-          <dt class="thumbnail cart-image"><img src="<%= item.loan.avatar.url %>" alt=""></dt>
+          <dt class="thumbnail cart-image"><img src="<%= item.item.avatar.url %>" alt=""></dt>
           <dd>
             <ul class="list-group">
-              <li class="list-group-item head">Loan: <%= item.loan.title %></li>
-              <li class="list-group-item">Description: <%= item.loan.description %></li>
+              <li class="list-group-item head">Item: <%= item.item.title %></li>
+              <li class="list-group-item">Description: <%= item.item.description %></li>
               <li class="list-group-item quantity">
-                <%= form_for(:item_quantity, url: "/cart_items/#{item.loan.id}", method: :put) do |f| %>
+                <%= form_for(:item_quantity, url: "/cart_items/#{item.item.id}", method: :put) do |f| %>
                   <%= f.label :quantity %>
                   <%= f.text_field :quantity, placeholder: "#{item.quantity}" %>
                   <%= f.submit "Change Quantity" %>
                 <% end %>
               </li>
-              <li class="list-group-item"><%= button_to("Remove Loan", "/cart_items/#{item.loan.id}",
+              <li class="list-group-item"><%= button_to("Remove Item", "/cart_items/#{item.item.id}",
                                 method: :delete) %></li>
               <li class="list-group-item">Subtotal: <%= number_to_currency(item.subtotal) %></li>
             </ul>
