@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
+  def current_seller?
+    current_user && current_user.seller?
+  end
+
   def current_user
     User.find(session[:user_id]) if session[:user_id]
   end

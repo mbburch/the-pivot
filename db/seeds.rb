@@ -1,9 +1,10 @@
+<<<<<<< HEAD
 class Seed
   def initialize
     generate_instructors_accounts
     generate_stores
     generate_categories
-    generate_loans
+    generate_items
     generate_users
     generate_orders
   end
@@ -57,9 +58,9 @@ class Seed
     end
   end
 
-  def generate_loans
+  def generate_items
     1.upto(500) do |i|
-      loan = Loan.create!(
+      item = Item.create!(
         title:       "#{Faker::Commerce.product_name} #{i}",
         description: Faker::Lorem.paragraph,
         price:       Faker::Commerce.price,
@@ -67,7 +68,7 @@ class Seed
         category_id: assign_category(i),
         store_id:    Store.find(Random.new.rand(1..10))
         )
-      puts "Loan #{i}: #{loan.title} created!"
+      puts "Item #{i}: #{item.title} created!"
     end
   end
 
@@ -115,7 +116,7 @@ class Seed
       user  = User.find(Random.new.rand(1..50))
       store = Store.find(Random.new.rand(1..10))
       order = Order.create!(user_id: user.id, store_id: store.id)
-      add_loan(order)
+      add_item(order)
       puts "Order #{i}: Order for #{user.name} created!"
     end
   end
@@ -131,7 +132,7 @@ class Seed
           card_expiration: Faker::Business.credit_card_expiry_date,
           status: %w( Ordered Paid Cancelled Completed).shuffle.sample
           )
-        add_loan(order)
+        add_item(order)
         puts "Order #{i}: Order for #{user.name} created!"
       end
     end
@@ -139,13 +140,61 @@ class Seed
 
   private
 
-  def add_loan(order)
+  def add_item(order)
     10.times do |i|
-      loan = Loan.find(Random.new.rand(1..500))
-      # order_items.load_id = loan.id
-      puts "#{i}: Added loan #{loan.title} to order #{order.id}."
+      item = Item.find(Random.new.rand(1..500))
+      # order_items.load_id = item.id
+      puts "#{i}: Added item #{item.title} to order #{order.id}."
     end
   end
 end
 
 Seed.new
+
+# category1 = Category.create(name: "Crafts")
+# category2 = Category.create(name: "Agriculture")
+# category3 = Category.create(name: "Transportation")
+#
+# Item.create(title: "Urban Bees",
+#             description: "Buy local Denver honey.",
+#             price: 50,
+#             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Fork-Beekeeping.jpg"),
+#             category: category2)
+#
+# Item.create(title: "Kitten Mittens",
+#             description: "Keep your kittens cozy. These mittens are handcrafted by a Capitol Hill artisan who anticipates being able to repay the item within 6 months of starting her business. She already has a proven customer base.",
+#             price: 25,
+#             avatar: open("https://s3.amazonaws.com/mb-the-pivot/3_Kittens_Playing_in_the_Garden.jpg"),
+#             category: category1)
+#
+# Order.create(user_id: 1,
+#              status: "Ordered",
+#              card_number: "1234123412341234",
+#              card_expiration: "08/20",
+#              total_cost: 50)
+#
+# OrderItem.create(item_id: 1, order_id: 1, quantity: 3)
+# OrderItem.create(item_id: 2, order_id: 1, quantity: 1)
+# OrderItem.create(item_id: 3, order_id: 1, quantity: 2)
+#
+# User.create(username: "admin",
+#             password: "password",
+#             full_name: "Admin Adminerstein",
+#             address: "123 Admin Blvd, Admintown, AD",
+#             role: 2)
+#
+# user = User.create(username: "alice",
+#             password: "password",
+#             full_name: "Alice Jones",
+#             address: "1500 Blake St., Denver, CO 80205")
+#
+# store = Store.create(title: "Adam", user_id: user.id)
+# Store.create(title: "Bob's Big Boys", user_id: user.id)
+# Store.create(title: "Bob's Big Dogs", user_id: user.id)
+#
+# item = Item.create(title: "Bike Bus",
+#             description: "We'll bring our shop to you.",
+#             price: 100,
+#             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
+#             category: category3,
+#             store_id: store.id)

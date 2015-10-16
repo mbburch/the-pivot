@@ -1,14 +1,14 @@
 require "rails_helper"
 
-feature "visitor viewing loans" do
+feature "visitor viewing items" do
   include_context("features")
 
-  scenario "can view loans" do
-    visit "/loans"
+  scenario "can view items" do
+    visit "/items"
     within(".header") do
-      expect(page).to have_content("Loans")
+      expect(page).to have_content("Items")
     end
-    within(".loans") do
+    within(".items") do
       expect(page).to have_content("test title")
       expect(page).to have_content("test description")
       expect(page).to have_content("$50.00")

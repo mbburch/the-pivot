@@ -1,5 +1,6 @@
 <%=form_for :bid, url: bids_path do |f| %>
   <%= f.label :amount %>
   <%= f.text_field :amount %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Place Bid" %>
 <% end %>
