@@ -14,9 +14,6 @@ Loan.create(title: "Kitten Mittens",
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/3_Kittens_Playing_in_the_Garden.jpg"),
             category: category1)
 
-Store.create(title: "Bob's Big Boys", user_id: user.id)
-Store.create(title: "Bob's Big Dogs", user_id: user.id)
-
 Order.create(user_id: 1,
              status: "Ordered",
              card_number: "1234123412341234",
@@ -39,6 +36,9 @@ user = User.create(username: "alice",
             address: "1500 Blake St., Denver, CO 80205")
 
 store = Store.create(title: "Adam", user_id: user.id)
+
+Store.create(title: "Bob's Big Boys", user_id: user.id)
+Store.create(title: "Bob's Big Dogs", user_id: user.id)
 
 loan = Loan.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",

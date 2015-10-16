@@ -22,11 +22,7 @@ Rails.application.routes.draw do
   end
 
   namespace :seller do
-    resources :loans, only: [:index, :new, :create, :edit, :update]
-    resources :orders, only: [:update]
-    get "/dashboard", to: "seller#show"
-    get "/edit", to: "seller#edit"
-    put "/edit", to: "seller#update"
+    get "/dashboard", to: "sellers#show"
   end
 
   resources :bids, only: [:new, :create]

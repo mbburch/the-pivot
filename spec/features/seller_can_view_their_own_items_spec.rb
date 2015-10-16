@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "user can view store items" do
-  include_context('features')
 
   scenario "as a store seller" do
     user  = User.create(username: "alice",
@@ -28,9 +27,8 @@ feature "user can view store items" do
       click_button('Log In')
     end
 
-    click_on('alice')
-    save_and_open_page
     expect(current_path).to eq seller_dashboard_path
+    save_and_open_page
     expect(page).to have_content("Furry Raccoon Hat")
     expect(page).to have_content("Hand made topper from real raccoon fur.")
     expect(page).to have_content("animal products")

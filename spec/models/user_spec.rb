@@ -53,6 +53,11 @@ RSpec.describe User, type: :model do
     @user = User.new(username: "bob",
                      password: "secret",
                      full_name: "Bob Doe")
+                     require 'pry'; binding.pry
     expect(@user).not_to be_valid
   end
+
+  # is_expected.to validate_presence_of(:name)
+
+  # it { should validate_presence_of(:username) }
 end
