@@ -1,20 +1,24 @@
 require "rails_helper"
 
 feature "User checks out cart" do
-  xscenario "with valid inputs" do
+  scenario "with valid inputs" do
     User.create(username: "Chris",
                 password: "password",
                 full_name: "Chris C",
                 address: "1510 Blake")
+
     category = Category.create(name: "Cat Stuff")
+
     Item.create(title: "Kitten Mittens",
                 description: "Everyone needs them!",
                 price: 100.5,
                 category_id: category.id)
+
     Item.create(title: "Kitten Socks",
                 description: "For your feet!",
                 price: 50.0,
                 category_id: category.id)
+
     visit "/items"
     click_link("Kitten Mittens")
     click_button("Add to Cart")
@@ -51,7 +55,7 @@ feature "User checks out cart" do
     expect(page).to have_content("Total: $150.50")
   end
 
-  scenario "visitor must login to checkout"do
+  scenario "visitor must login to checkout" do
     User.create(username: "Chris",
                 password: "password",
                 full_name: "Chris C",
