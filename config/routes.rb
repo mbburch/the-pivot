@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: "loans#index"
-  resources :loans, only: [:index, :show]
+  root to: "items#index"
+  resources :items, only: [:index, :show]
   resources :categories, only: [:show]
   post "/cart_items", to: "cart_items#create"
   get "/cart", to: "cart_items#index"
@@ -14,7 +14,15 @@ Rails.application.routes.draw do
   delete "/cart_items/:id", to: "cart_items#destroy"
 
   namespace :admin do
-    resources :loans, only: [:index, :new, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :edit, :update]
+    resources :orders, only: [:update]
+    get "/dashboard", to: "admins#show"
+    get "/edit", to: "admins#edit"
+    put "/edit", to: "admins#update"
+  end
+
+   namespace :admin do
+    resources :items, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:update]
     get "/dashboard", to: "admins#show"
     get "/edit", to: "admins#edit"

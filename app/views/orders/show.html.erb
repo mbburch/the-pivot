@@ -3,17 +3,17 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Loan Title</th>
+        <th>Item Title</th>
         <th>Quantity Purchased</th>
         <th>Subtotal</th>
       </tr>
     </thead>
     <tbody>
-      <% @loan_quantities.each do |loan, quantity| %>
+      <% @item_quantities.each do |item, quantity| %>
         <tr>
-          <td><%= loan.title %></td>
+          <td><%= item.title %></td>
           <td><%= quantity %></td>
-          <td><%= number_to_currency(quantity * loan.price) %></td>
+          <td><%= number_to_currency(quantity * item.price) %></td>
         </tr>
       <% end %>
     </tbody>

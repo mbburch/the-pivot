@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/">BidDay</a>
     <ul class="nav navbar-nav">
-      <li><a href="/loans">Loans</a></li>
+      <li><a href="/items">Items</a></li>
       <li><a href="/stores">Browse Stores</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -24,7 +24,7 @@
         <li><a href="/register">Create Account</a></li>
         <li><a href="/login">Log In</a></li>
       <% end %>
-      <li><a href="/cart">Loans in Cart: <%= session[:cart].values.sum if session[:cart] %></a></li>
+      <li><a href="/cart">Items in Cart: <%= session[:cart].values.sum if session[:cart] %></a></li>
       <li><a id="cart" href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
     </ul>
   </div>

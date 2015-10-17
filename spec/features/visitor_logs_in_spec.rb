@@ -8,7 +8,7 @@ feature "Visitor logging in" do
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("alice")
     visit "/"
-    within ".navbar" do
+    within ".nav-wrapper" do
       expect(page).to have_content("alice")
       expect(page).to have_link("Log Out")
       expect(page).to have_no_link("Log In")

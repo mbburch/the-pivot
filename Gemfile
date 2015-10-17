@@ -16,6 +16,7 @@ gem "aws-sdk", '< 2.0'
 gem "figaro"
 gem "rubocop"
 gem "bootstrap-sass"
+gem "faker"
 
 group :development, :test do
   gem "byebug"
