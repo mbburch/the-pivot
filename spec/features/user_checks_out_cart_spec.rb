@@ -24,6 +24,7 @@ feature "User checks out cart" do
     click_button("Add to Cart")
     visit "/items"
     click_link("Kitten Socks")
+    save_and_open_page
     click_button("Add to Cart")
     visit(login_path)
     fill_in "Username", with: "Chris"

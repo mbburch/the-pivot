@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user can view store items" do
-  scenario "unregistered user" do
+  xscenario "unregistered user" do
     user  = User.create(username: "alice",
             password: "password",
             full_name: "Alice Jones",
@@ -19,28 +19,10 @@ feature "user can view store items" do
                        category_id: category.id)
     visit '/stores'
     click_on("Hats hats hats")
-    expect(current_path).to eq("/stores/#{store.id}")
+    expect(current_path).to eq("/#{store.slug}/items")
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  xscenario "as a store seller" do
+  scenario "as a store seller" do
     user  = User.create(username: "alice",
             password: "password",
             full_name: "Alice Jones",

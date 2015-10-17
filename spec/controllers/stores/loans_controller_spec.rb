@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Stores::LoansController, type: :controller do
+RSpec.describe Stores::ItemsController, type: :controller do
 
 end

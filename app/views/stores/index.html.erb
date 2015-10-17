@@ -1,6 +1,6 @@
 <ul>
   <% @stores.each do |store| %>
-    <li><%= link_to store.title, store_path(store) %>
+    <li><%= link_to store.title, store_items_path(store: store.slug) %>
     | <%= store.user.full_name %></li>
   <% end %>
 </ul>

@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 
   resources :bids, only: [:new, :create]
   resources :orders, only: [:new, :create, :show]
-  resources :stores, only: [:index, :show]
+  resources :stores, only: [:index]
 end

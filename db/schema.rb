@@ -47,24 +47,6 @@ ActiveRecord::Schema.define(version: 20151016033206) do
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["store_id"], name: "index_items_on_store_id", using: :btree
 
-  create_table "loans", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.decimal  "price"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.integer  "category_id"
-    t.string   "status"
-    t.integer  "store_id"
-  end
-
-  add_index "loans", ["category_id"], name: "index_loans_on_category_id", using: :btree
-  add_index "loans", ["store_id"], name: "index_loans_on_store_id", using: :btree
-
   create_table "order_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "order_id"

@@ -17,7 +17,7 @@ feature "user can visit a store" do
     visit stores_path
     expect(page).to have_content("Adam")
     click_on "Adam"
-    expect(current_path).to eq(store_path(store))
+    expect(current_path).to eq(store_items_path(store.slug))
     expect(page).to have_content("We'll bring our shop to you.")
   end
 end
