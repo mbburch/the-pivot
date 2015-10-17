@@ -1,7 +1,12 @@
-<ul>
-  <li><%= @store.title %> ||
-  <%= @store.user.full_name %></li>
-  <li><% @store.items.each do |item| %>
-    <%= link_to item.description, item_path(item) %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <h1><%= @store.title %></h1>
+  <h2><%= @store.user.full_name %></h2>
+  <div class="row">
+    <div class="row items">
+      <% @items.each do |item| %>
+        <%= render partial: "/layouts/tiny_item",
+                  locals: { item: item, mode: :add, path: request.path } %>
+      <% end %>
+    </div>
+  </div>
+</div>

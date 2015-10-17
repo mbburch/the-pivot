@@ -1,10 +1,12 @@
 <div class="container">
- <h1>Welcome to <%= current_store.title %></h1>
- <% current_store.items.each do |item| %>
-   <div class="col-sm-3">
-     <p>
-       <%= item.description %>
-     </p>
-   </div>
- <% end %>
+  <h1><%= current_store.title.upcase %></h1>
+  <h2><%= current_store.user.full_name %></h2>
+  <div class="row">
+    <div class="row items">
+      <% @items.each do |item| %>
+        <%= render partial: "/layouts/tiny_item",
+                  locals: { item: item, mode: :add, path: request.path } %>
+      <% end %>
+    </div>
+  </div>
 </div>

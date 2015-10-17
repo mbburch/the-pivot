@@ -114,7 +114,7 @@ class Seed
         price:       Faker::Commerce.price,
         # avatar:      open("http://lorempixel.com/320/150"),
         category_id: assign_category(i),
-        store_id:    Store.find(Random.new.rand(1..10))
+        store_id:    Store.find(Random.new.rand(1..20)).id
         )
       puts "Item #{i}: #{item.title} created!"
     end
