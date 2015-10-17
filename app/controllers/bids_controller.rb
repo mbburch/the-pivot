@@ -3,10 +3,9 @@ class BidsController < ApplicationController
   def create
     if validate_params
       Bid.create(bid_params)
-      flash[:success] = "Your bid has been placed!"
+      flash[:notice] = "Your bid has been placed!"
     else
-      require 'pry'; binding.pry
-      flash[:errors] = "Invalid Bid."
+      flash[:notice] = "Your bid is invalid. Please try again!"
     end
     redirect_to item_path(params[:bid][:origin_page])
   end
