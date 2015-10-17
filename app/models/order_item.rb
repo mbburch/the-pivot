@@ -1,4 +1,4 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :order
-  belongs_to :loan
+  belongs_to :item
 end

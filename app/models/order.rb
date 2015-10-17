@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
                          message: "%{value} is not a valid status" }
   validates :card_number, presence: true
   validates :card_expiration, presence: true
+
   def date
     created_at.strftime("%b %d, %Y")
   end
