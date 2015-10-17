@@ -6,7 +6,6 @@ feature "visitor edits item quantity in cart" do
   scenario "by increasing item quantity without being logged in" do
     visit "/"
     click_link("Items")
-
     within(".items") do
       first(".caption").click_button("Add to Cart")
     end

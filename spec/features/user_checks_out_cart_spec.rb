@@ -65,6 +65,7 @@ feature "User checks out cart" do
                 description: "Everyone needs them!",
                 price: 100.5,
                 category_id: category.id)
+
     visit "/items"
     within(".items") do
       click_button("Add to Cart")

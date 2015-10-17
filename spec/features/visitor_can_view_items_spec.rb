@@ -5,7 +5,7 @@ feature "visitor viewing items" do
 
   scenario "can view items" do
     visit "/items"
-    within(".header") do
+    within(".nav-wrapper") do
       expect(page).to have_content("Items")
     end
     within(".items") do

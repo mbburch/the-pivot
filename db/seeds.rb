@@ -5,7 +5,7 @@ class Seed
     generate_categories
     generate_items
     generate_users
-    generate_orders
+    # generate_orders
   end
 
   def generate_instructors_accounts
