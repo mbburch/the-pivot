@@ -21,16 +21,8 @@ Rails.application.routes.draw do
     put "/edit", to: "admins#update"
   end
 
-   namespace :admin do
-    resources :items, only: [:index, :new, :create, :edit, :update]
-    resources :orders, only: [:update]
-    get "/dashboard", to: "admins#show"
-    get "/edit", to: "admins#edit"
-    put "/edit", to: "admins#update"
-  end
-
-  namespace :seller do
-    get "/dashboard", to: "sellers#show"
+  namespace :stores, path: ':store', as: :store do
+    resources :items, only: [:index]
   end
 
   resources :bids, only: [:new, :create]
