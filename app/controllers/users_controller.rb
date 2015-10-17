@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    require 'pry'; binding.pry
     @user = User.new
   end
 
