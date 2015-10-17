@@ -5,13 +5,13 @@ feature "visitor removes loan from cart" do
 
   scenario "without being logged in" do
     visit "/"
-    click_link("Loans")
+    click_link("Items")
 
-    within(".loans") do
+    within(".items") do
       first(".caption").click_button("Add to Cart")
     end
 
-    expect(page).to have_content("Loans in Cart: 1")
+    expect(page).to have_content("Items in Cart: 1")
     page.find("#cart").click
     within(".items") do
       expect(page).to have_content("test title")

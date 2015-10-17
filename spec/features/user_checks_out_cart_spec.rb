@@ -61,8 +61,8 @@ feature "User checks out cart" do
                 description: "Everyone needs them!",
                 price: 100.5,
                 category_id: category.id)
-    visit "/loans"
-    within(".loans") do
+    visit "/"
+    within(".items") do
       click_button("Add to Cart")
     end
     page.find("#cart").click
@@ -84,7 +84,7 @@ feature "User checks out cart" do
       click_button("Submit Order")
     end
     expect(current_path).to eq order_path(Order.last.id)
-    expect(page).to have_content("Loans in Cart: 0")
+    expect(page).to have_content("Items in Cart: 0")
     expect(page).to have_content("Order successful!")
     expect(page).to have_content("Kitten Mittens")
     expect(page).to have_content("1")
@@ -175,7 +175,7 @@ feature "User checks out cart" do
     visit order_path(order.id)
 
     expect(current_path).to eq order_path(Order.last.id)
-    expect(page).to have_content("Loans in Cart:")
+    expect(page).to have_content("Items in Cart:")
     expect(page).to have_content("Kitten Mittens")
     expect(page).to have_content("1")
     expect(page).to have_content("Total: $100.50")

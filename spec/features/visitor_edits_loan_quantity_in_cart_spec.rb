@@ -5,13 +5,12 @@ feature "visitor edits loan quantity in cart" do
 
   scenario "by increasing loan quantity without being logged in" do
     visit "/"
-    click_link("Loans")
 
-    within(".loans") do
+    within(".items") do
       first(".caption").click_button("Add to Cart")
     end
 
-    expect(page).to have_content("Loans in Cart: 1")
+    expect(page).to have_content("Items in Cart: 1")
     page.find("#cart").click
     within(".items") do
       expect(page).to have_content("test title")
@@ -31,14 +30,13 @@ feature "visitor edits loan quantity in cart" do
 
   scenario "by decreasing loan quantity without being logged in" do
     visit "/"
-    click_link("Loans")
 
-    within(".loans") do
+    within(".items") do
       first(".caption").click_button("Add to Cart")
       first(".caption").click_button("Add to Cart")
     end
 
-    expect(page).to have_content("Loans in Cart: 2")
+    expect(page).to have_content("Items in Cart: 2")
     page.find("#cart").click
     within(".items") do
       expect(page).to have_content("test title")

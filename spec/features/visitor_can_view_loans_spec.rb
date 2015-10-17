@@ -4,11 +4,11 @@ feature "visitor viewing loans" do
   include_context("features")
 
   scenario "can view loans" do
-    visit "/loans"
-    within(".header") do
-      expect(page).to have_content("Loans")
+    visit "/"
+    within(".nav-wrapper") do
+      expect(page).to have_content("Items")
     end
-    within(".loans") do
+    within(".items") do
       expect(page).to have_content("test title")
       expect(page).to have_content("test description")
       expect(page).to have_content("$50.00")
