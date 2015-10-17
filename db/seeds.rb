@@ -110,42 +110,42 @@ class Seed
     end
   end
 
-  # def generate_orders
-  #   100.times do |i|
-  #     user  = User.find(Random.new.rand(1..50))
-  #     store = Store.find(Random.new.rand(1..10))
-  #     order = Order.create!(user_id: user.id, store_id: store.id)
-  #     add_item(order)
-  #     puts "Order #{i}: Order for #{user.name} created!"
-  #   end
-  # end
-  #
-  # def generate_orders
-  #   users  = User.all
-  #   users.each do |user|
-  #     10.times do |i|
-  #       store = Store.find(Random.new.rand(1..10))
-  #       order = Order.create!(
-  #         user_id: user.id,
-  #         card_number: Faker::Business.credit_card_number,
-  #         card_expiration: Faker::Business.credit_card_expiry_date,
-  #         status: %w( Ordered Paid Cancelled Completed).shuffle.sample
-  #         )
-  #       add_item(order)
-  #       puts "Order #{i}: Order for #{user.name} created!"
-  #     end
-  #   end
-  # end
-  #
-  # private
-  #
-  # def add_item(order)
-  #   10.times do |i|
-  #     item = Item.find(Random.new.rand(1..500))
-  #     # order_items.load_id = item.id
-  #     puts "#{i}: Added item #{item.title} to order #{order.id}."
-  #   end
-  # end
+  def generate_orders
+    100.times do |i|
+      user  = User.find(Random.new.rand(1..50))
+      store = Store.find(Random.new.rand(1..10))
+      order = Order.create!(user_id: user.id, store_id: store.id)
+      add_item(order)
+      puts "Order #{i}: Order for #{user.name} created!"
+    end
+  end
+
+  def generate_orders
+    users  = User.all
+    users.each do |user|
+      10.times do |i|
+        store = Store.find(Random.new.rand(1..10))
+        order = Order.create!(
+          user_id: user.id,
+          card_number: Faker::Business.credit_card_number,
+          card_expiration: Faker::Business.credit_card_expiry_date,
+          status: %w( Ordered Paid Cancelled Completed).shuffle.sample
+          )
+        add_item(order)
+        puts "Order #{i}: Order for #{user.name} created!"
+      end
+    end
+  end
+
+  private
+
+  def add_item(order)
+    10.times do |i|
+      item = Item.find(Random.new.rand(1..500))
+      # order_items.load_id = item.id
+      puts "#{i}: Added item #{item.title} to order #{order.id}."
+    end
+  end
 end
 
 Seed.new

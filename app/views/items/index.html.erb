@@ -6,9 +6,9 @@
   <div class="row">
   </div>
   <div class="row items">
-    <% @loans.each do |loan| %>
-      <%= render partial: "/layouts/tiny_loan",
-                locals: { loan: loan, mode: :add, path: request.path } %>
+    <% @items.each do |item| %>
+      <%= render partial: "/layouts/tiny_item",
+                locals: { item: item, mode: :add, path: request.path } %>
     <% end %>
   </div>
 </div>
