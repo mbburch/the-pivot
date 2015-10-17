@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :store
+  belongs_to :auction
 
   has_attached_file :avatar,
                     styles: { medium: "800x300#", thumb: "320x150#" },
