@@ -64,6 +64,7 @@ feature "User checks out cart" do
     Item.create(title: "Kitten Mittens",
                 description: "Everyone needs them!",
                 price: 100.5,
+                category_id: category.id)
 
     visit "/items"
     within(".items") do
