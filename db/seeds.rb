@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Seed
   def initialize
     generate_instructors_accounts
