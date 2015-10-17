@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "visitor removes loan from cart" do
+feature "visitor removes item from cart" do
   include_context("features")
 
   scenario "without being logged in" do
@@ -19,7 +19,7 @@ feature "visitor removes loan from cart" do
       expect(page).to have_content("Total Price: $50.00")
     end
 
-    click_button("Remove Loan")
+    click_button("Remove Item")
 
     expect(current_path).to eq("/cart")
     expect(page).to have_content("Total Price: $0.00")
@@ -31,6 +31,6 @@ feature "visitor removes loan from cart" do
 
     click_link("test title")
 
-    expect(current_path).to eq("/loans/#{loan.id}")
+    expect(current_path).to eq("/items/#{item.id}")
   end
 end

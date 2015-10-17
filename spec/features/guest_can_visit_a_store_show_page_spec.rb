@@ -7,7 +7,7 @@ feature "user can visit a store" do
                         full_name: "Alice Jones",
                         address: "1500 Blake St., Denver, CO 80205")
     store = Store.create(title: "Adam", user_id: user.id)
-            Loan.create(title: "Bike Bus",
+            Item.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
             price: 100,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),

@@ -22,8 +22,8 @@ class OrdersController < ApplicationController
     if show_order?(order.user_id)
       @order = order
       @user = User.find(order.user_id)
-      loan_quantity = LoanQuantities.new(order)
-      @loan_quantities = loan_quantity.loan_quantities
+      item_quantity = ItemQuantities.new(order)
+      @item_quantities = item_quantity.item_quantities
     else
       render file: "/public/404"
     end

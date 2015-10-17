@@ -1,8 +1,8 @@
 class CartItemsController < ApplicationController
   def create
-    loan_cart = cart
-    loan_cart.add_item(params)
-    session[:cart] = loan_cart.data
+    item_cart = cart
+    item_cart.add_item(params)
+    session[:cart] = item_cart.data
     redirect(params)
   end
 
@@ -38,8 +38,8 @@ class CartItemsController < ApplicationController
   end
 
   def delete_notice
-    loan = Loan.find(params[:id])
-    flash[:notice] = "Successfully removed <a href=/loans/#{params[:id]}>
-      #{loan.title}</a> from your cart."
+    item = Item.find(params[:id])
+    flash[:notice] = "Successfully removed <a href=/items/#{params[:id]}>
+      #{item.title}</a> from your cart."
   end
 end

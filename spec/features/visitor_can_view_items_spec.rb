@@ -1,11 +1,11 @@
 require "rails_helper"
 
-feature "visitor viewing loans" do
+feature "visitor viewing items" do
   include_context("features")
 
-  scenario "can view loans" do
-    visit "/"
-    within(".nav-wrapper") do
+  scenario "can view items" do
+    visit "/items"
+    within(".header") do
       expect(page).to have_content("Items")
     end
     within(".items") do

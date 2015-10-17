@@ -1,11 +1,11 @@
 require "rails_helper"
 
-feature "visitor edits loan quantity in cart" do
+feature "visitor edits item quantity in cart" do
   include_context("features")
 
-  scenario "by increasing loan quantity without being logged in" do
+  scenario "by increasing item quantity without being logged in" do
     visit "/"
-
+    click_link("Items")
     within(".items") do
       first(".caption").click_button("Add to Cart")
     end
@@ -28,8 +28,9 @@ feature "visitor edits loan quantity in cart" do
     end
   end
 
-  scenario "by decreasing loan quantity without being logged in" do
+  scenario "by decreasing item quantity without being logged in" do
     visit "/"
+    click_link("Items")
 
     within(".items") do
       first(".caption").click_button("Add to Cart")

@@ -13,8 +13,8 @@ class UserOrder
   end
 
   def create_order_items
-    @session[:cart].each do |loan_id, quantity|
-      OrderItem.create(loan_id: loan_id,
+    @session[:cart].each do |item_id, quantity|
+      OrderItem.create(item_id: item_id,
                        quantity: quantity,
                        order_id: @order.id)
     end
