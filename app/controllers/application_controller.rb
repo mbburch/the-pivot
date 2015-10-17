@@ -25,6 +25,4 @@ class ApplicationController < ActionController::Base
   def show_order?(order_user_id)
     (current_user) && (current_user.id == order_user_id) || (current_admin?)
   end
-
- include ApplicationHelper
 end

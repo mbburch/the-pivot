@@ -13,7 +13,7 @@ feature "Visitor creating account" do
     click_button "Submit"
 
     expect(current_path).to eq("/dashboard")
-    expect(page).to have_content("grant")
+    expect(page).to have_content("Grant")
     expect(page).to have_content("Log Out")
     expect(page).not_to have_content("Create Account")
     expect(page).not_to have_content("Log In")

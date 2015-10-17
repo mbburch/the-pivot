@@ -6,7 +6,7 @@ feature "Admin editing profile" do
   scenario "succeeds with valid attributes" do
     log_in_as("admin", "password")
     visit "/"
-    click_link "admin"
+    click_link "Admin"
     click_link "Edit My Profile"
     fill_in "admin[username]", with: "test username"
     fill_in "admin[password]", with: "test password"
@@ -22,7 +22,7 @@ feature "Admin editing profile" do
     log_in_as("alice", "password")
 
     visit "/"
-    click_link "alice"
+    click_link "Alice"
     expect(page).not_to have_content("Edit My Profile")
 
     visit "/admin/edit"
@@ -32,7 +32,7 @@ feature "Admin editing profile" do
   scenario "fails with invalid attributes" do
     log_in_as("admin", "password")
     visit "/"
-    click_link "admin"
+    click_link "Admin"
     click_link "Edit My Profile"
     fill_in "admin[username]", with: "alice"
     fill_in "admin[password]", with: "password"

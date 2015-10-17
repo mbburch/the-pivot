@@ -4,7 +4,7 @@
     <%= f.number_field :amount %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :origin_page, value: @item.id %>
-    <%= f.submit "Place Bid" %>
+    <%= f.submit "Place Bid", data: {:confirm => 'Are you sure you wish to place this bid?'} %>
   <% end %>
 <% else %>
   <td id="cart-donate-button">

@@ -1,9 +1,9 @@
 class BidsController < ApplicationController
 
   def create
-    if validate_params
-      Bid.create(bid_params)
-      flash[:notice] = "Your bid has been placed!"
+    bid = Bid.create(bid_params)
+    if bid.save
+      flash[:notice] = "Your bid has been placed. Good luck!"
     else
       flash[:notice] = "Your bid is invalid. Please try again!"
     end
