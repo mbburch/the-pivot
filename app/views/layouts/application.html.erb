@@ -13,14 +13,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-
-  <%= render partial: "layouts/new_navbar" %>
-  <%= yield %>
-  <%= render partial: "layouts/footer" %>
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  <header>
+    <%= render partial: "layouts/new_navbar" %>
+  </header>
+  <main>
+    <%= yield %>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  </main>
+  <footer class="page-footer blue-grey">
+    <%= render partial: "layouts/footer" %>
+  </footer>
 </body>
 </html>
