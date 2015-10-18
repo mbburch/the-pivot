@@ -5,6 +5,8 @@ class Seed
     generate_categories
     generate_items
     generate_users
+    generate_auctions
+    generate_bids
     # generate_orders
   end
 
@@ -134,6 +136,28 @@ class Seed
         add_item(order)
         puts "Order #{i}: Order for #{user.name} created!"
       end
+    end
+  end
+
+  def generate_auctions
+    100.times do |i|
+      auction = Auction.create!(
+        starting_price:  "#{Faker::Commerce.price}#{i}",
+        bid_id: "#{Faker::Number.between(1, 90)}",
+        item_id: "#{Faker::Number.between(1, 500)}"
+        )
+      puts "Auction #{i}: #{auction.id} -  created!"
+    end
+  end
+
+  def generate_bids
+    100.times do |i|
+      bid = Bid.create!(
+        amount:  "#{Faker::Commerce.price}#{i}",
+        auction_id: "#{Faker::Number.between(1, 90)}",
+        user_id: "#{Faker::Number.between(1, 80)}"
+        )
+      puts "Bid #{i}: #{bid.id} -  created!"
     end
   end
 

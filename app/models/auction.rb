@@ -4,4 +4,8 @@ class Auction < ActiveRecord::Base
   belongs_to :item
 
   validates :starting_price, presence: true
+
+  def highest_bid
+    bids.maximum(:amount)
+  end
 end
