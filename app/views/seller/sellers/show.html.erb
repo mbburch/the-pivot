@@ -10,7 +10,7 @@
         <h3><%= link_to store.title, store_items_path(store.slug) %></h3>
         </div>
         <div class="row">
-          <%= link_to "Edit", "#", {:class => "waves-effect waves-light btn right"} %>
+          <%= link_to "Edit", edit_store_path(store), :class => "waves-effect waves-light btn right" %>
           <%= link_to "Delete", store_path(store),:method => :delete,:class => "waves-effect waves-light btn right red"%>
         </div>
       </li>

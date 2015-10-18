@@ -15,8 +15,22 @@ class StoresController < ApplicationController
     @stores = Store.all
   end
 
-  def destroy
+  def edit
+    @store = Store.find(params[:id])
+    render 'edit'
+  end
 
+  def update
+    @store = Store.find(params[:id])
+    if @store.update_attributes(store_params)
+      flash[:success] = "Successfully Updated!"
+      redirect_to seller_dashboard_path(current_user)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
     store = Store.find(params[:id])
     store.delete
     redirect_to seller_dashboard_path(current_user)
