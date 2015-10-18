@@ -2,6 +2,7 @@
   <% @auctions.each do |auction| %>
     <%= auction.item.title %>
     <li>Starting Price: $<%= auction.starting_price %></li>
-    <li>Current Highest Bid: $<%= auction.highest_bid %></li>
+    <li>Current Highest Bid: $<%= auction.highest_bid %></li><br>
+
   <% end %>
 </ul>

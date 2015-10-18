@@ -24,14 +24,15 @@ Rails.application.routes.draw do
 
   namespace :seller, path: ':seller', as: :seller do
     get "/dashboard", to: "sellers#show"
+    resources :auctions
   end
 
   namespace :stores, path: ':store', as: :store do
     resources :items, only: [:index]
   end
 
-  resources :bids, only: [:new, :create]
+  resources :bids, only: [:new, :create, :update]
   resources :orders, only: [:new, :create, :show]
   resources :stores, only: [:index, :new, :edit, :update]
-  resources :auctions, only: [:index, :create, :show]
+  resources :auctions, only: [:index]
 end

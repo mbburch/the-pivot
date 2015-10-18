@@ -5,6 +5,8 @@ class Auction < ActiveRecord::Base
 
   validates :starting_price, presence: true
 
+  delegate :starting_price, to: :items
+
   def highest_bid
     bids.maximum(:amount)
   end

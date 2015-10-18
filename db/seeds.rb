@@ -4,13 +4,11 @@ category3 = Category.create(name: "Transportation")
 
 Item.create(title: "Urban Bees",
             description: "Buy local Denver honey.",
-            price: 50,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Fork-Beekeeping.jpg"),
             category: category2)
 
 Item.create(title: "Kitten Mittens",
             description: "Keep your kittens cozy. These mittens are handcrafted by a Capitol Hill artisan who anticipates being able to repay the loan within 6 months of starting her business. She already has a proven customer base.",
-            price: 25,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/3_Kittens_Playing_in_the_Garden.jpg"),
             category: category1)
 
@@ -52,7 +50,6 @@ Store.create(title: "Doggie Treats", user_id: seller.id)
 
 item = Item.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
-            price: 100,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
             category: category3,
             store_id: store.id)
@@ -123,7 +120,6 @@ class Seed
       item = Item.create!(
         title:       "#{Faker::Commerce.product_name} #{i}",
         description: Faker::Lorem.paragraph,
-        price:       "#{Faker::Commerce.price}",
         # avatar:      open("http://lorempixel.com/320/150"),
         category_id: assign_category(i),
         store_id:    Store.find(Random.new.rand(1..20)).id
