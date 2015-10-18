@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   namespace :seller, path: ':seller', as: :seller do
     get "/dashboard", to: "sellers#show"
+    get "/edit", to: "sellers#edit"
+    put "/edit", to: "sellers#update"
   end
 
   namespace :stores, path: ':store', as: :store do

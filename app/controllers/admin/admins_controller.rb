@@ -20,7 +20,9 @@ class Admin::AdminsController < Admin::BaseController
     end
   end
 
+  private
+
   def admin_params
-    params.require(:admin).permit(:username, :password, :full_name, :address)
+    params.require(:admin).permit(:username, :password, :full_name, :address, :email)
   end
 end
