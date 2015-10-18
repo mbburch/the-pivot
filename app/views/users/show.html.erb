@@ -1,16 +1,6 @@
 <body class="full">
   <div class="container">
     <h1>Hello, <%= User.find(session[:user_id]).username.upcase %>!</h1>
-      <ul>
-      <% current_user.bids.each do |bid| %>
-        <li>Auction Item: <%= bid.auction.item.title %>
-        <li>Starting Price: $<%= bid.auction.starting_price %></li>
-        <li>Your Current Bid: $<%= bid.amount %></li>
-        <li>Bid Status: <%= bid.status %></li>
-          <% if bid.status == "Losing Bid" %>
-            <%= link_to "Update Your Bid", item_path(bid.auction.item), class: "btn btn-primary" %><br><br>
-          <% end %>
-      <% end %>
-      </ul>
+    <%= render partial: "dashboard" %>
   </div>
 </body>
