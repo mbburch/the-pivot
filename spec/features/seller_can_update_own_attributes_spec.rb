@@ -40,7 +40,7 @@ feature "Seller editing profile" do
     fill_in "user[email]", with: "testsellermail@email.com"
     click_on "Save My Profile"
 
-    expect(current_path).to eq("/seller/edit")
+    expect(current_path).to eq("/edit")
     expect(page).to have_content("Username has already been taken")
   end
 end
