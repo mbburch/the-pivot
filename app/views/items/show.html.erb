@@ -4,7 +4,7 @@
     <div class="show-item">
       <%= image_tag @item.avatar.url %>
       <div class="caption-full">
-          <h4 class="pull-right"><%= "Current Bid: #{number_to_currency(@item.price)}" %></h4>
+          <h4 class="pull-right"><%= "Current Bid: #{number_to_currency(@item.current_bid)}" %></h4>
           <h4><a href="#"><%= @item.title %></a></h4>
           <p><%= @item.description %></p>
           <%= render "/bids/new.html.erb" %>

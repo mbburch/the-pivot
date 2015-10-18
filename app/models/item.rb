@@ -13,12 +13,12 @@ class Item < ActiveRecord::Base
                     default_url: "https://s3.amazonaws.com/turing-denvestments/assets/Richard_Stallman_by_Anders_Brenna_01.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  def current_price
-    auction = Auction.find_by(item_id: self[:id])
-    if auction
-      auction[:starting_price]
+  def current_bid
+    if bids.maximum(:amount) == nil
+      auction = Auction.find_by(item_id: self)
+      auction.starting_price
     else
-      "This item is not available at the moment. Check back soon!"
+      bids.maximum(:amount)
     end
   end
 end
