@@ -5,8 +5,9 @@ feature "user can visit a store" do
     user   = User.create(username: "alice",
                         password: "password",
                         full_name: "Alice Jones",
-                        address: "1500 Blake St., Denver, CO 80205")
-    store = Store.create(title: "Adam", user_id: user.id)
+                        address: "1500 Blake St., Denver, CO 80205",
+                        email: "alice@example.com")
+    store = Store.create(title: "Adam", description: "We sell everything", user_id: user.id)
             Item.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
             price: 100,
@@ -16,6 +17,7 @@ feature "user can visit a store" do
 
     visit stores_path
     expect(page).to have_content("Adam")
+    expect(page).to have_content("We sell everything")
     click_on "Adam"
     expect(current_path).to eq(store_items_path(store.slug))
     expect(page).to have_content("We'll bring our shop to you.")

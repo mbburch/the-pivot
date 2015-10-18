@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
     @user = User.new(username: "bob",
                      password: "secret",
                      full_name: "Bob Doe",
+                     email: "bob@example.com",
                      address: "123 Main St. Anytown USA 12345")
   end
 
@@ -22,6 +23,7 @@ RSpec.describe User, type: :model do
   it "must have a username" do
     @user = User.new(password: "secret",
                      full_name: "Bob Doe",
+                     email: "bob@example.com",
                      address: "123 Main St. Anytown USA 12345")
     expect(@user).not_to be_valid
   end
@@ -29,6 +31,7 @@ RSpec.describe User, type: :model do
   it "must have a password" do
     @user = User.new(username: "bob",
                      full_name: "Bob Doe",
+                     email: "bob@example.com",
                      address: "123 Main St. Anytown USA 12345")
     expect(@user).not_to be_valid
   end
@@ -38,6 +41,7 @@ RSpec.describe User, type: :model do
     new_user = User.new(username: "bob",
                         password: "secret",
                         full_name: "Bob Doe",
+                        email: "bob@example.com",
                         address: "123 Main St. Anytown USA 12345")
     expect(new_user).not_to be_valid
   end
@@ -45,7 +49,16 @@ RSpec.describe User, type: :model do
   it "must have a full name" do
     @user = User.new(username: "bob",
                      password: "secret",
+                     email: "bob@example.com",
                      address: "123 Main St. Anytown USA 12345")
+    expect(@user).not_to be_valid
+  end
+
+  it "must have an address" do
+    @user = User.new(username: "bob",
+                     password: "secret",
+                     email: "bob@example.com",
+                     full_name: "Bob Doe")
     expect(@user).not_to be_valid
   end
 

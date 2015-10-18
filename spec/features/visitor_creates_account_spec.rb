@@ -10,6 +10,8 @@ feature "Visitor creating account" do
     fill_in "user[password]", with: "password"
     fill_in "user[full_name]", with: "Grant Jones"
     fill_in "user[address]", with: "1500 Blake St., Denver, CO 80205"
+    fill_in "user[email]", with: "grant@mymail.com"
+    save_and_open_page
     click_button "Submit"
 
     expect(current_path).to eq("/dashboard")
@@ -26,6 +28,7 @@ feature "Visitor creating account" do
     fill_in "user[password]", with: "password"
     fill_in "user[full_name]", with: "Alice Jones"
     fill_in "user[address]", with: "1500 Blake St., Denver, CO 80205"
+    fill_in "user[email]", with: "alice@example.com"
     click_button "Submit"
 
     expect(current_path).to eq("/register")

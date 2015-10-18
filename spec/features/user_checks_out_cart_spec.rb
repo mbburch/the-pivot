@@ -5,6 +5,7 @@ feature "User checks out cart" do
     User.create(username: "Chris",
                 password: "password",
                 full_name: "Chris C",
+                email: "chris@example.com",
                 address: "1510 Blake")
 
     category = Category.create(name: "Cat Stuff")
@@ -60,6 +61,7 @@ feature "User checks out cart" do
     User.create(username: "Chris",
                 password: "password",
                 full_name: "Chris C",
+                email: "chris@example.com",
                 address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
     Item.create(title: "Kitten Mittens",
@@ -101,6 +103,7 @@ feature "User checks out cart" do
     user = User.create(username: "Jimothy",
                        password: "password",
                        full_name: "Chris C",
+                       email: "chris@example.com",
                        address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
     item = Item.create(title: "Kitten Mittens",
@@ -124,6 +127,7 @@ feature "User checks out cart" do
     user = User.create(username: "Jimothy",
                        password: "password",
                        full_name: "Chris C",
+                       email: "chris@example.com",
                        address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
     item = Item.create(title: "Kitten Mittens",
@@ -141,6 +145,7 @@ feature "User checks out cart" do
     User.create(username: "Chris",
                 password: "password",
                 full_name: "Bob C",
+                email: "bob@example.com",
                 address: "9 Sherman")
     visit "/login"
     fill_in "Username", with: "Chris"
@@ -155,6 +160,7 @@ feature "User checks out cart" do
     user = User.create(username: "Jimothy",
                        password: "password",
                        full_name: "Chris C",
+                       email: "chris@example.com",
                        address: "901 Sherman")
     category = Category.create(name: "Cat Stuff")
     item = Item.create(title: "Kitten Mittens",
@@ -172,6 +178,7 @@ feature "User checks out cart" do
     User.create(username: "Chris",
                 password: "password",
                 full_name: "Bob C",
+                email: "bob@example.com",
                 address: "9 Sherman",
                 role: 1)
     visit "/login"

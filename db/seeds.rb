@@ -73,7 +73,7 @@ class Seed
       password:  "password",
       full_name: "Josh Mejia",
       address:   "1510 Blake St, Denver, CO 80202",
-      # email:     "josh@turing.io"
+      email:     "josh@turing.io"
     )
 
     andrew = User.create(
@@ -81,7 +81,7 @@ class Seed
       password:  "password",
       full_name: "Andrew Carmer",
       address:   "1510 Blake St, Denver, CO 80202",
-      # email:     "andrew@turing.io",
+      email:     "andrew@turing.io",
       role:      2
     )
 
@@ -90,7 +90,7 @@ class Seed
       password:  "password",
       full_name: "Jorge Tellez",
       address:   "1510 Blake St, Denver, CO 80202",
-      # email:     "jorge@turing.io",
+      email:     "jorge@turing.io",
       role:      1
     )
   end
@@ -100,6 +100,7 @@ class Seed
     20.times do |i|
       store = Store.create!(
         title: "#{Faker::Company.name} #{Faker::Company.suffix}",
+        description: Faker::Lorem.paragraph,
         user_id: andrew.id
         )
       puts "Store #{i}: #{store.title} created!"
@@ -162,8 +163,8 @@ class Seed
         username:  "#{Faker::Internet.user_name}#{i}",
         password:  "password",
         full_name: Faker::Name.name,
-        address:   "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.postcode}"
-        # email:     Faker::Internet.email
+        address:   "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.postcode}",
+        email:     Faker::Internet.email
         )
       puts "User #{i}: #{user.username} -  created!"
     end
