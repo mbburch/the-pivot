@@ -2,8 +2,12 @@ th {
   font-size: 1.5em;
 }
 
-.store-title a {
-  color: black;
+.store-title {
+  font-weight: lighter;
+  text-align: center;
+  a {
+    color: black;
+  }
 }
 
 #store-index img{
@@ -27,3 +31,8 @@ th {
   margin-top: -100px; /* move logo UP! */
   text-align: center;
 }
+
+.panel-title {
+  font-size: 2em;
+}
+
