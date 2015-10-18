@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <h1 class="store-header"><%= current_store.title.titleize %></h1>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">Store Info</h4>
+    </div>
+    <div class="panel-body">
+        <p>Store Owner: <%= current_store.user.full_name %></p>
+        <p>Contact the Owner: </p>
+        <p>About: </p>
+      </div>
+  </div>
+
+
+  <div class="row">
+    <div class="row items">
+      <% @items.each do |item| %>
+        <%= render partial: "/layouts/tiny_item",
+                  locals: { item: item, mode: :add, path: request.path } %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,21 @@
-<ul>
-  <% @stores.each do |store| %>
-    <li><%= link_to store.title, store_path(store) %>
-    | <%= store.user.full_name %></li>
-  <% end %>
-</ul>
+<div class="col s12 pickgradient" id="store-index">
+  <h1>Shop</h1>
+  <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&fm=jpg&s=a4598570a3286ea23369fdefe46953ba" alt="" />
+</div>
+
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-hover">
+      <tr>
+        <th>Store</th>
+        <th>Store Owner</th>
+      </tr>
+      <% @stores.each do |store| %>
+        <tr>
+          <td class="store-title"><%= link_to store.title.titleize, store_items_path(store: store.slug) %></td>
+          <td><%= store.user.full_name %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

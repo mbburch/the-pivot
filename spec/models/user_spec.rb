@@ -55,4 +55,8 @@ RSpec.describe User, type: :model do
                      full_name: "Bob Doe")
     expect(@user).not_to be_valid
   end
+
+  # is_expected.to validate_presence_of(:name)
+
+  # it { should validate_presence_of(:username) }
 end

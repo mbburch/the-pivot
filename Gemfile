@@ -25,6 +25,7 @@ group :development, :test do
   gem "capybara"
   gem "launchy"
   gem "simplecov", require: false
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :development do
@@ -36,4 +37,3 @@ end
 group :production do
   gem "rails_12factor"
 end
-
