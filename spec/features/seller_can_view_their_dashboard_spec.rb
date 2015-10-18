@@ -5,14 +5,17 @@ feature "seller can view store items" do
   scenario "can see their own dashboard" do
     user  = User.create(username: "alice",
                         password: "password",
-                       full_name: "Alice Jones",
-                         address: "1500 Blake St., Denver, CO 80205",
-                            role: 2)
+                        full_name: "Alice Jones",
+                        address: "1500 Blake St., Denver, CO 80205",
+                        email: "alice@example.com",
+                        role: 2)
 
     store_one = Store.create( title: "hats hats hats",
-                            user_id: user.id)
+                              description: "Never leave your head uncovered.",
+                              user_id: user.id)
     store_two = Store.create( title: "handmade wallets",
-                            user_id: user.id)
+                              description: "Put your money here.",
+                              user_id: user.id)
 
     visit root_path
     click_link("Log In")
@@ -37,15 +40,17 @@ feature "seller can view store items" do
   scenario "a seller cant see other sellers page" do
     user  = User.create(username: "alice",
                         password: "password",
-                       full_name: "Alice Jones",
-                         address: "1500 Blake St., Denver, CO 80205",
-                            role: 2)
+                        full_name: "Alice Jones",
+                        address: "1500 Blake St., Denver, CO 80205",
+                        email: "alice@example.com",
+                        role: 2)
 
     other_seller = User.create(username: "bob",
                                password: "password",
-                              full_name: "Bob Jones",
-                                address: "1500 Blake St., Denver, CO 80205",
-                                   role: 2)
+                               full_name: "Bob Jones",
+                               address: "1500 Blake St., Denver, CO 80205",
+                               email: "bob@example.com",
+                               role: 2)
 
     visit root_path
     click_link("Log In")
