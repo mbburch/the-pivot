@@ -1,5 +1,6 @@
 <body class="full">
   <div class="container">
     <h1>Hello, <%= User.find(session[:user_id]).username.upcase %>!</h1>
+    <div class="btn btn-default btn-md"><%= link_to "Edit My Profile", edit_path %></div>
   </div>
 </body>
