@@ -1,9 +1,6 @@
 class Seller::SellersController < ApplicationController
   before_action :authorize_seller
 
-  def show
-  end
-
   private
 
   def authorize_seller
