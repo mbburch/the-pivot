@@ -19,17 +19,6 @@ feature "Admin editing profile" do
     expect(page).to have_content("Hello, TEST USERNAME!")
   end
 
-  scenario "fails when not actually admin" do
-    log_in_as("alice", "password")
-
-    visit "/"
-    click_link "Alice"
-    expect(page).not_to have_content("Edit My Profile")
-
-    visit "/admin/edit"
-    expect(page).to have_content("The page you were looking for doesn't exist")
-  end
-
   scenario "fails with invalid attributes" do
     log_in_as("admin", "password")
     visit "/"
