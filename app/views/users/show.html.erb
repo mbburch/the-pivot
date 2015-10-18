@@ -1,5 +1,11 @@
 <body class="full">
   <div class="container">
     <h1>Hello, <%= User.find(session[:user_id]).username.upcase %>!</h1>
+    <% require 'pry'; binding.pry %>
+    <% current_user.bids.each do |bid| %>
+      <li><%= bid.auction.item.title %>
+      <li>Starting Price: $<%= bid.auction.starting_price %></li>
+      <li>Your Current Bid: $<%= bid.amount %></li>
+    <% end %>
   </div>
 </body>
