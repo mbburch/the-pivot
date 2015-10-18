@@ -6,10 +6,10 @@ feature "Visitor logging in" do
   scenario "works with correct login information" do
     log_in_as("alice", "password")
     expect(current_path).to eq("/dashboard")
-    expect(page).to have_content("alice")
+    expect(page).to have_content("Alice")
     visit "/"
     within ".nav-wrapper" do
-      expect(page).to have_content("alice")
+      expect(page).to have_content("Alice")
       expect(page).to have_link("Log Out")
       expect(page).to have_no_link("Log In")
     end

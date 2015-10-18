@@ -9,12 +9,12 @@ class Store < ActiveRecord::Base
   before_validation :capitalize, :generate_slug
 
   def capitalize
-    self.title = title.to_s.capitalize
+    self.title = title.to_s.titleize
   end
 
   def generate_slug
     self.slug = title.parameterize
   end
 
-  
+
 end
