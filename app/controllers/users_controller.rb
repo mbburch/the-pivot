@@ -3,9 +3,9 @@ class UsersController < ApplicationController
     if !current_user
       redirect_to "/"
     elsif current_admin?
-      redirect_to "/admin/dashboard"
+      redirect_to admin_dashboard_path
     elsif current_seller?
-      redirect_to "/seller/dashboard"
+      redirect_to seller_dashboard_path(current_user.username)
     end
   end
 

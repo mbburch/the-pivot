@@ -30,15 +30,25 @@ User.create(username: "admin",
             address: "123 Admin Blvd, Admintown, AD",
             role: 1)
 
+seller = User.create(username: "seller",
+            password: "password",
+            full_name: "Rocko Nelson",
+            address: "123 Admin Blvd, Admintown, AD",
+            role: 2)
+
 user = User.create(username: "alice",
             password: "password",
             full_name: "Alice Jones",
             address: "1500 Blake St., Denver, CO 80205")
 
+
 store = Store.create(title: "Adam", user_id: user.id)
 
 Store.create(title: "Bob's Big Boys", user_id: user.id)
 Store.create(title: "Bob's Big Dogs", user_id: user.id)
+
+Store.create(title: "Canine Apparel", user_id: seller.id)
+Store.create(title: "Doggie Treats", user_id: seller.id)
 
 item = Item.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
