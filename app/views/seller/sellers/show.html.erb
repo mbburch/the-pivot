@@ -11,10 +11,10 @@
         </div>
         <div class="row">
           <%= link_to "Edit", "#", {:class => "waves-effect waves-light btn right"} %>
-          <%= link_to "Delete", "#", {:class => "waves-effect waves-light btn right red"} %>
+          <%= link_to "Delete", store_path(store),:method => :delete,:class => "waves-effect waves-light btn right red"%>
         </div>
       </li>
     <% end %>
   </ul>
-  <%= link_to "Add New Store", "#", {:class => "waves-effect waves-light btn-large"} %>
+  <%= link_to "Add New Store", new_store_path, {:class => "waves-effect waves-light btn-large"} %>
 </div>

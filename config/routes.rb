@@ -31,5 +31,5 @@ Rails.application.routes.draw do
 
   resources :bids, only: [:new, :create]
   resources :orders, only: [:new, :create, :show]
-  resources :stores, only: [:index, :new, :edit, :update]
+  resources :stores, only: [:index, :new, :create, :edit, :update, :destroy]
 end
