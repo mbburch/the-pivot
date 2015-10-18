@@ -11,11 +11,10 @@ feature "Visitor creating account" do
     fill_in "user[full_name]", with: "Grant Jones"
     fill_in "user[address]", with: "1500 Blake St., Denver, CO 80205"
     fill_in "user[email]", with: "grant@mymail.com"
-    save_and_open_page
     click_button "Submit"
 
     expect(current_path).to eq("/dashboard")
-    expect(page).to have_content("grant")
+    expect(page).to have_content("Grant")
     expect(page).to have_content("Log Out")
     expect(page).not_to have_content("Create Account")
     expect(page).not_to have_content("Log In")
