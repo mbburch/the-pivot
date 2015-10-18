@@ -1,0 +1,10 @@
+<div class="container">
+ <h1>Welcome to <%= current_store.title %></h1>
+ <% current_store.items.each do |item| %>
+   <div class="col-sm-3">
+     <p>
+       <%= item.description %>
+     </p>
+   </div>
+ <% end %>
+</div>

@@ -3,11 +3,18 @@ class Store < ActiveRecord::Base
   has_many :items
 
   validates :title, uniqueness: true, presence: true
+  validates :slug, uniqueness: true, presence: true
   validates :user_id, presence: true
 
-  before_validation :capitalize
+  before_validation :capitalize, :generate_slug
 
   def capitalize
-    self.title = title.to_s.capitalize
+    self.title = title.to_s.titleize
   end
+
+  def generate_slug
+    self.slug = title.parameterize
+  end
+
+
 end
