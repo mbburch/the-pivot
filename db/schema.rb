@@ -11,18 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018164327) do
+ActiveRecord::Schema.define(version: 20151018191354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auctions", force: :cascade do |t|
+    t.integer  "item_id"
+    t.decimal  "starting_price"
+    t.datetime "starting_time"
+    t.datetime "ending_time"
+  end
+
+  add_index "auctions", ["item_id"], name: "index_auctions_on_item_id", using: :btree
 
   create_table "bids", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "amount"
     t.integer  "user_id"
+    t.integer  "auction_id"
+    t.string   "status"
   end
 
+  add_index "bids", ["auction_id"], name: "index_bids_on_auction_id", using: :btree
   add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
@@ -32,7 +44,6 @@ ActiveRecord::Schema.define(version: 20151018164327) do
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "price"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"
@@ -85,6 +96,8 @@ ActiveRecord::Schema.define(version: 20151018164327) do
     t.string   "email"
   end
 
+  add_foreign_key "auctions", "items"
+  add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "users"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "stores"

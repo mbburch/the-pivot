@@ -1,5 +1,11 @@
-<%=form_for :bid, url: bids_path do |f| %>
-  <%= f.label :amount %>
-  <%= f.text_field :amount %>
-  <%= f.submit "Place Bid" %>
+<% if current_user %>
+  <%=form_for :bid, url: bids_path do |f| %>
+    <%= f.label :amount %>
+    <%= f.number_field :amount %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :origin_page, value: @item.id %>
+    <%= f.submit "Place Bid", data: {:confirm => 'Are you sure you wish to place this bid?'} %>
+  <% end %>
+<% else %>
+    <%= link_to "Join to Bid", login_path, class: "btn btn-primary" %>
 <% end %>
