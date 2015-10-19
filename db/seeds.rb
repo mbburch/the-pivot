@@ -198,8 +198,8 @@ class Seed
   def generate_auctions
     100.times do |i|
       auction = Auction.create!(
-        starting_price:  "#{Faker::Commerce.price}#{i}",
-        item_id: "#{Faker::Number.between(1, 500)}"
+        starting_price:  Faker::Commerce.price,
+        item_id: Faker::Number.between(1, 500)
         )
       puts "Auction #{i}: #{auction.id} -  created!"
     end
@@ -208,9 +208,9 @@ class Seed
   def generate_bids
     100.times do |i|
       bid = Bid.create!(
-        amount:  "#{Faker::Commerce.price}#{i}",
-        auction_id: "#{Faker::Number.between(1, 100)}",
-        user_id: "#{Faker::Number.between(1, 80)}"
+        amount:  Faker::Commerce.price,
+        auction_id: Faker::Number.between(1, 100),
+        user_id: Faker::Number.between(1, 80)
         )
       puts "Bid #{i}: #{bid.id} -  created!"
     end
