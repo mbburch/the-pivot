@@ -28,14 +28,12 @@ shared_context "features" do
   let!(:item) do
     Item.create(title: "test title",
                 description: "test description",
-                price: 50,
                 category: category)
   end
 
   let!(:other_item) do
     Item.create(title: "other test title",
                 description: "other test description",
-                price: 75,
                 category: other_category)
   end
 
