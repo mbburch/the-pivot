@@ -15,8 +15,7 @@ class Item < ActiveRecord::Base
 
   def current_bid
     if bids.maximum(:amount) == nil
-      auction = Auction.find_by(item_id: self)
-      auction.starting_price
+      "No one has placed a bid!"
     else
       bids.maximum(:amount)
     end
