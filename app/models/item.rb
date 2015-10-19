@@ -21,4 +21,9 @@ class Item < ActiveRecord::Base
       bids.maximum(:amount)
     end
   end
+
+  def starting_price
+    auction = Auction.find_by(item_id: self)
+    auction.starting_price
+  end
 end

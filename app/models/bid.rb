@@ -6,7 +6,7 @@ class Bid < ActiveRecord::Base
 
   def status
     highest_bid = self.auction.highest_bid
-    if self[:amount] > highest_bid
+    if self[:amount] >= highest_bid
       self[:status] = "Winning Bid"
     else
       self[:status] = "Losing Bid"

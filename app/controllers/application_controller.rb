@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :category_list, :current_user, :cart
+  helper_method :category_list, :current_user, :cart, :current_store
 
   def category_list
     Category.all
+  end
+
+  def current_store
+    if params[:store]
+      @current_store ||= Store.find_by(slug: params[:store])
+    else
+      @current_store ||= Store.find_by(slug: params[:slug])
+    end
   end
 
   def current_admin?

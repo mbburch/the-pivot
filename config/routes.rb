@@ -6,13 +6,16 @@ Rails.application.routes.draw do
   post "/cart_items", to: "cart_items#create"
   get "/cart", to: "cart_items#index"
   put "/cart_items/:id", to: "cart_items#update"
+  delete "/cart_items/:id", to: "cart_items#destroy"
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  get "/dashboard", to: "users#show"
   delete "/logout", to: "sessions#destroy"
+
+  get "/dashboard", to: "users#show"
   get "/register", to: "users#new"
   post "/register", to: "users#create"
-  delete "/cart_items/:id", to: "cart_items#destroy"
+
 
   namespace :admin do
     resources :items, only: [:new, :create, :edit, :update]
@@ -24,11 +27,12 @@ Rails.application.routes.draw do
 
   namespace :seller, path: ':seller', as: :seller do
     get "/dashboard", to: "sellers#show"
-    resources :auctions
+    get "/:slug/auctions", to: "auctions#index"
+    resources :items, only: [:show]
   end
 
   namespace :stores, path: ':store', as: :store do
-    resources :items, only: [:index]
+    resources :auctions, only: [:index, :show]
   end
 
   resources :bids, only: [:new, :create, :update]
