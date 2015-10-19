@@ -1,0 +1,13 @@
+<% @auctions.each do |auction| %>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <%= image_tag auction.item.avatar.url %>
+      <div class="caption">
+      <h4 class="pull-right">
+      <h4><%= link_to auction.item.title, item_path(auction.item) %></h4>
+      <p><%= auction.item.description %></p>
+      <%= link_to "Edit", edit_admin_item_path(auction.item) %>
+      </div>
+    </div>
+  </div>
+<% end %>
