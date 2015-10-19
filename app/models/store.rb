@@ -3,6 +3,7 @@ class Store < ActiveRecord::Base
   has_many :items
 
   validates :title, uniqueness: true, presence: true
+  validates :description, presence: true
   validates :slug, uniqueness: true, presence: true
   validates :user_id, presence: true
 

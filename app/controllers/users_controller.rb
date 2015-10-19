@@ -24,9 +24,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    user = User.find(current_user.id)
+    if user.update(user_params)
+      redirect_to dashboard_path
+    else
+      flash[:notice] = user.errors.full_messages.join(", ")
+      redirect_to edit_path
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :full_name, :address)
+    params.require(:user).permit(:username, :password, :full_name, :address, :email)
   end
 end

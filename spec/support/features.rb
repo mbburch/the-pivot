@@ -4,6 +4,7 @@ shared_context "features" do
                 password: "password",
                 full_name: "Admin Adminerstein",
                 address: "123 Admin Blvd, Admintown, USA",
+                email: "user1@example.com",
                 role: 1)
   end
 
@@ -12,6 +13,7 @@ shared_context "features" do
                 password: "password",
                 full_name: "Alice Smith",
                 address: "123 Main St. Anytown, USA",
+                email: "user2@example.com",
                 role: 0)
   end
 

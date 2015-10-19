@@ -4,7 +4,7 @@
       <h1>Admin Dashboard</h1>
       <p class="lead">Hello, <%= User.find(session[:user_id]).username.upcase %>!</p>
       <div id="admin-links" class="row col-md-10">
-        <span class="btn btn-warning btn-md"><%= link_to "Edit My Profile", admin_edit_path %></span>
+        <span class="btn btn-warning btn-md"><%= link_to "Edit My Profile", edit_path %></span>
         <span class="btn btn-primary btn-md"><%= link_to "View Items", admin_items_path %></span>
       </div>
       <div class="btn-group">

@@ -4,5 +4,6 @@
     <% if current_user.bids != nil %>
       <%= render partial: "dashboard" %>
     <% end %>
+    <div class="btn btn-default btn-md"><%= link_to "Edit My Profile", edit_path %></div>
   </div>
 </body>

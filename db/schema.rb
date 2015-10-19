@@ -77,11 +77,12 @@ ActiveRecord::Schema.define(version: 20151018191354) do
   end
 
   create_table "stores", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "title"
     t.string   "slug"
+    t.string   "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(version: 20151018191354) do
     t.string   "full_name"
     t.string   "address"
     t.integer  "role",            default: 0
+    t.string   "email"
   end
 
   add_foreign_key "auctions", "items"

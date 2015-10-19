@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :bids, only: [:new, :create]
   resources :orders, only: [:new, :create, :show]
-  resources :stores, only: [:index, :new, :edit, :update]
   resources :auctions, only: [:index]
+  resources :stores
+
 
   post "/cart_items", to: "cart_items#create"
   get "/cart", to: "cart_items#index"
@@ -18,6 +19,9 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   get "/dashboard", to: "users#show"
+  get "/edit", to: "users#edit"
+  put "/edit", to: "users#update"
+  get "/dashboard", to: "users#show"
   get "/register", to: "users#new"
   post "/register", to: "users#create"
 
@@ -26,8 +30,6 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :edit, :update]
     resources :orders, only: [:update]
     get "/dashboard", to: "admins#show"
-    get "/edit", to: "admins#edit"
-    put "/edit", to: "admins#update"
   end
 
   namespace :seller, path: ':seller', as: :seller do
