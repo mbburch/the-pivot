@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
 
   def current_bid
     if bids.maximum(:amount) == nil
-      "No one has placed a bid!"
+      0
     else
       bids.maximum(:amount)
     end
