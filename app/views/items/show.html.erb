@@ -1,13 +1,18 @@
 <div class="container">
   <div class="col-md-12">
-    <div class="show-item">
-      <%= image_tag @item.avatar.url %>
-      <div class="caption-full">
-          <h4 class="pull-right"><%= "Current Bid: #{number_to_currency(@item.price)}" %></h4>
-          <h4><a href="#"><%= @item.title %></a></h4>
-          <p><%= @item.description %></p>
-          <%= render "/bids/new.html.erb" %>
+    <div class="row show-item">
+      <h3> <%=@item.title %></h3>
+      <div class="col-md-8">
+        <%= image_tag @item.avatar.url, {:class=> "img-responsive"}%>
       </div>
+      <div class="col-md-4" id="item-description">
+        <h5>Description:</h5>
+        <p><%= @item.description %></p>
+      </div>
+    </div>
+    <div class="row">
+      <h5 class=""><%= "Current Bid: #{number_to_currency(@item.price)}" %></h5>
+      <%= render "/bids/new.html.erb" %>
     </div>
   </div>
 </div>
