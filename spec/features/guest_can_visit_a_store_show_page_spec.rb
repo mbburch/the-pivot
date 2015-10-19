@@ -10,7 +10,6 @@ feature "user can visit a store" do
     store = Store.create(title: "Adam", description: "We sell everything", user_id: user.id)
             Item.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
-            price: 100,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
             category: Category.create(name: "Transportation"),
             store_id: store.id)
