@@ -1,6 +1,7 @@
 class Bid < ActiveRecord::Base
   belongs_to :user
   belongs_to :auction
+  has_one :item, through: :auction
 
   validates :amount, :numericality => { :greater_than => 0}, presence: true
 

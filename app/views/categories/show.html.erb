@@ -3,10 +3,7 @@
     <div class="col-md-12">
       <h1 class="lead header"><%= @category.name %></h1>
       <div class="row items">
-        <% @items.each do |item| %>
-          <%= render partial: "/layouts/tiny_item",
-            locals: { item: item, mode: :add, path: request.path } %>
-        <% end %>
+        <%= render partial: "/layouts/tiny_item" %>
       </div>
     </div>
   </div>

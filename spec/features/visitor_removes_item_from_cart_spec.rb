@@ -3,7 +3,7 @@ require "rails_helper"
 feature "visitor removes item from cart" do
   include_context("features")
 
-  scenario "without being logged in" do
+  xscenario "without being logged in" do
     visit "/"
     click_link("Items")
 
