@@ -1,0 +1,13 @@
+<%= @item.title %></a>
+<p><%= @item.description %></p></h5>
+<%=form_for :auction, url: seller_item_path do |f| %>
+  <%= f.label :starting_price %>
+  <%= f.number_field :starting_price %>
+  <%= f.label :starting_time %>
+  <%= f.number_field :starting_time %>
+  <%= f.label :ending_time %>
+  <%= f.number_field :ending_time %>
+  <%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.hidden_field :origin_page, value: @item.id %>
+  <%= f.submit "Create Auction", data: {:confirm => 'Are you sure you wish to create this auction?'} %>
+<% end %>

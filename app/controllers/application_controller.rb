@@ -7,11 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_store
-    if params[:store]
-      @current_store ||= Store.find_by(slug: params[:store])
-    else
-      @current_store ||= Store.find_by(slug: params[:slug])
-    end
+    @current_store ||= Store.find_by(slug: params[:store])
   end
 
   def current_admin?

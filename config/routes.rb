@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root to: "auctions#index"
+
   resources :items, only: [:index, :show]
   resources :categories, only: [:show]
+  resources :bids, only: [:new, :create]
+  resources :orders, only: [:new, :create, :show]
+  resources :stores, only: [:index, :new, :edit, :update]
+  resources :auctions, only: [:index]
 
   post "/cart_items", to: "cart_items#create"
   get "/cart", to: "cart_items#index"
@@ -27,16 +32,12 @@ Rails.application.routes.draw do
 
   namespace :seller, path: ':seller', as: :seller do
     get "/dashboard", to: "sellers#show"
-    get "/:slug/auctions", to: "auctions#index"
+    get "/:store/auctions", to: "auctions#index"
+    post "/items/:id", to: "auctions#create"
     resources :items, only: [:show]
   end
 
   namespace :stores, path: ':store', as: :store do
     resources :auctions, only: [:index, :show]
   end
-
-  resources :bids, only: [:new, :create, :update]
-  resources :orders, only: [:new, :create, :show]
-  resources :stores, only: [:index, :new, :edit, :update]
-  resources :auctions, only: [:index]
 end

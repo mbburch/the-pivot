@@ -208,7 +208,7 @@ class Seed
     100.times do |i|
       bid = Bid.create!(
         amount:  "#{Faker::Commerce.price}#{i}",
-        auction_id: "#{Faker::Number.between(1, 90)}",
+        auction_id: "#{Faker::Number.between(1, 100)}",
         user_id: "#{Faker::Number.between(1, 80)}"
         )
       puts "Bid #{i}: #{bid.id} -  created!"
