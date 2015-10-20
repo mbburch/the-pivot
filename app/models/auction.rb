@@ -5,6 +5,7 @@ class Auction < ActiveRecord::Base
   has_one :category, through: :item
 
   validates :starting_price, :numericality => { :greater_than => 0}, presence: true
+  validates :item_id, presence: true
 
   def highest_bid
     bids.maximum(:amount)

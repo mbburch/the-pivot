@@ -4,6 +4,7 @@ class Bid < ActiveRecord::Base
   has_one :item, through: :auction
 
   validates :amount, :numericality => { :greater_than => 0}, presence: true
+  validates :user_id, presence: true
 
   def greater?(auction)
     if auction.bids.count > 0
