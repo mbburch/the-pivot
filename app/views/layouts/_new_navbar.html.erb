@@ -8,6 +8,17 @@
   <div class="nav-wrapper blue-grey">
     <a href="/" class="brand-logo">BidDay</a>
     <ul class="right hide-on-med-and-down">
+      <li>
+        <div class="nav-wrapper blue-grey">
+          <form>
+            <div class="input-field">
+              <label for="search"><i class="material-icons">search</i></label>
+              <input id="search" type="search" required>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </li>
       <% if current_user %>
         <li><%= link_to "Hello, #{current_user.username.titleize}", dashboard_path %></li>
         <li><%= link_to "Log Out", logout_path, method: :delete %></li>
