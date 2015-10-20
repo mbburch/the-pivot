@@ -4,6 +4,10 @@ class Seller::AuctionsController < Seller::SellersController
     @auctions = Auction.all
   end
 
+  def new
+    @seller = User.find_by(username: params[:seller])
+  end
+
   def create
     auction = Auction.create(auction_params)
     if auction.save
