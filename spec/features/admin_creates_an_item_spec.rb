@@ -3,7 +3,7 @@ require "rails_helper"
 feature "User creating item" do
   include_context "features"
 
-  scenario "without image succeeds while logged in as admin" do
+  xscenario "without image succeeds while logged in as admin" do
     log_in_as("admin", "password")
 
     click_link("View Items")
@@ -20,7 +20,7 @@ feature "User creating item" do
     expect(page).to have_content("$50.00")
   end
 
-  scenario "fails with incorrect attributes" do
+  xscenario "fails with incorrect attributes" do
     visit "/"
     click_link("Log In")
     fill_in "user[username]", with: "admin"

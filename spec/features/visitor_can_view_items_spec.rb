@@ -1,10 +1,9 @@
 require "rails_helper"
 
-feature "visitor viewing items" do
+feature "visitor viewing auctions" do
   include_context("features")
-    scenario "can view items" do
-    category = Category.create!(name: "Wool")
-    other_category = Category.create!(name: "Fire")
+
+  scenario "can view auctions" do
     item = Item.create!(title: "First Item",
                        description: "test description",
                        category: category)
@@ -15,7 +14,7 @@ feature "visitor viewing items" do
     Auction.create!(starting_price: 15, item_id: item2.id)
     visit "/auctions"
     within(".nav-wrapper") do
-      expect(page).to have_content("Items")
+      expect(page).to have_content("Auctions")
     end
     expect(page).to have_content("First Item")
     expect(page).to have_content("test description")
