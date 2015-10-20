@@ -5,16 +5,22 @@
 </ul>
 
 <nav>
-  <div class="nav-wrapper blue-grey">
+  <div class="nav-wrapper blue-grey" id="nav">
     <a href="/" class="brand-logo">BidDay</a>
     <ul class="right hide-on-med-and-down">
-      <% if current_user %>
-        <li><%= link_to "Hello, #{current_user.username.titleize}", dashboard_path %></li>
-        <li><%= link_to "Log Out", logout_path, method: :delete %></li>
-      <% else %>
-        <li><a href="/register">Create Account</a></li>
-        <li><a href="/login">Log In</a></li>
-      <% end %>
+      <li>
+        <%= form_tag(auctions_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Auctions" %>
+        <%= submit_tag "Search", {:id => "search-button"}%>
+        <% end %>
+      </li>
+    <% if current_user %>
+      <li><%= link_to "Hello, #{current_user.username.titleize}", dashboard_path %></li>
+      <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+    <% else %>
+      <li><a href="/register">Create Account</a></li>
+      <li><a href="/login">Log In</a></li>
+    <% end %>
       <li><a href="/auctions">Auctions</a></li>
       <li><a href="/stores">Browse Stores</a></li>
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
