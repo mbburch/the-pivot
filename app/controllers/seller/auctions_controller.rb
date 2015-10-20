@@ -4,6 +4,11 @@ class Seller::AuctionsController < Seller::SellersController
     @auctions = Auction.all
   end
 
+  def new
+    @seller = User.find_by(username: params[:seller])
+    @items = @seller.items
+  end
+
   def create
     auction = Auction.create(auction_params)
     if auction.save
@@ -11,7 +16,7 @@ class Seller::AuctionsController < Seller::SellersController
     else
       flash[:notice] = "Please make sure you have filled in all of the fields."
     end
-    redirect_to seller_item_path(id: params[:id])
+    redirect_to :back
   end
 
   private

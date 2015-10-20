@@ -2,6 +2,7 @@
 <% current_user.bids.each do |bid| %>
   <li>Auction Item: <%= bid.auction.item.title %>
   <li>Starting Price: $<%= bid.auction.starting_price %></li>
+  <li>Current Highest Bid: $<%= bid.auction.highest_bid %></li>
   <li>Your Current Bid: $<%= bid.amount %></li>
   <li>Bid Status: <%= bid.status %></li><br>
     <% if bid.status == "Losing Bid" %>

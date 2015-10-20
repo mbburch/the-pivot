@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :stores
   has_many :bids
-  has_many :items
+  has_many :items, through: :stores
 
   validates :username, presence: true, uniqueness: true
   validates :full_name, presence: true

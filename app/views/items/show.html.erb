@@ -12,6 +12,7 @@
       </div>
     </div>
     <div class="row">
+      <h5 class=""><%= "Starting Price: #{number_to_currency(@item.starting_price)}" %></h5>
       <h5 class=""><%= "Current Bid: #{number_to_currency(@item.current_bid)}" %></h5>
       <%= render "/bids/new.html.erb" %>
     </div>

@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="text-center">Create a New Auction</h1>
+  <%= render partial: "layouts/flash" %>
+  <div class="well col-sm-6 col-sm-offset-3">
+    <%= form_for :auction, :url => seller_auctions_path do |f| %>
+    <div class="form-group">
+      <%= f.label :store_id %>
+      <%= f.collection_select :store_id, Store.where(user_id: @seller),
+                              :id, :title,{}, { class: "form-control", include_blank: "None"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :item_id %>
+      <%= f.collection_select :item_id, Item.where(id: @items),
+                              :id, :title,{}, { class: "form-control", include_blank: "None"} %>
+    <div class="form-group">
+      <%= f.label :starting_price %>
+      <%= f.text_field :starting_price, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :starting_time %>
+      <%= select_datetime DateTime.now, prefix: :starting_time, ampm: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :ending_time %>
+      <%= select_datetime DateTime.now, prefix: :ending_time, ampm: true %>
+    </div>
+      <%= f.submit "Create Auction", class: "btn btn medium" %>
+    <% end %>
+  </div>
+</div>
