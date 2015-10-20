@@ -7,10 +7,9 @@
       <%= f.collection_select :store_id, Store.where(user_id: @seller),
                               :id, :title,{}, { class: "form-control", include_blank: "None"} %>
     </div>
-    <!-- create a table of all stores with checkboxes? If checked, populate items? -->
     <div class="form-group">
       <%= f.label :item_id %>
-      <%= f.collection_select :item_id, Item.where(id: is checked box.items),
+      <%= f.collection_select :item_id, Item.where(id: @items),
                               :id, :title,{}, { class: "form-control", include_blank: "None"} %>
     <div class="form-group">
       <%= f.label :starting_price %>

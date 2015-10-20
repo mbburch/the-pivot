@@ -6,6 +6,7 @@ class Seller::AuctionsController < Seller::SellersController
 
   def new
     @seller = User.find_by(username: params[:seller])
+    @items = @seller.items
   end
 
   def create
