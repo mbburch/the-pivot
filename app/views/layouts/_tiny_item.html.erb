@@ -6,7 +6,8 @@
       <h4 class="pull-right">
       <h4><%= link_to auction.item.title, item_path(auction.item) %></h4>
       <p><%= auction.item.description %></p>
-      <%= link_to "Edit", edit_admin_item_path(auction.item) %>
+      <p>Starting Price: <%= number_to_currency(auction.starting_price) %></p>
+      <p>Current Bid: <%= number_to_currency(auction.item.current_bid) %></p>
       </div>
     </div>
   </div>
