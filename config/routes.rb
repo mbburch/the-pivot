@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   namespace :seller, path: ':seller', as: :seller do
     get "/dashboard", to: "sellers#show"
     get "/:store/auctions", to: "auctions#index"
-    post "/items/:id", to: "auctions#create"
+    resources :auctions, only: [:new, :create]
     resources :items, only: [:show]
   end
 
