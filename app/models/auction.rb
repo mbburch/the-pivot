@@ -10,4 +10,8 @@ class Auction < ActiveRecord::Base
   def highest_bid
     bids.maximum(:amount)
   end
+
+  def self.search(query)
+    joins(:item).where("title like ?", "%#{query}%")
+  end
 end
