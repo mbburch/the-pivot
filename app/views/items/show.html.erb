@@ -14,7 +14,15 @@
     <div class="row">
       <h5 class=""><%= "Starting Price: #{number_to_currency(@item.starting_price)}" %></h5>
       <h5 class=""><%= "Current Bid: #{number_to_currency(@item.current_bid)}" %></h5>
-      <%= render "/bids/new.html.erb" %>
+      <% if @bids.where(user_id: current_user).exists? %>
+        <% bid = @bids.find_by(user_id: current_user) %>
+        <h5 class=""><%= "Your Current Bid: #{number_to_currency(bid.amount)}" %></h5>
+        <h5 class=""><%= "Your Status: #{bid.status}" %></h5>
+      <% elsif current_user %>
+        <%= render "/bids/new.html.erb" %>
+      <% else %>
+        <%= link_to "Join to Bid", login_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
