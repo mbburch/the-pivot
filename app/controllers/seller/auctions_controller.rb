@@ -16,7 +16,7 @@ class Seller::AuctionsController < Seller::SellersController
     else
       flash[:notice] = "Please make sure you have filled in all of the fields."
     end
-    redirect_to seller_item_path(id: params[:id])
+    redirect_to :back
   end
 
   private

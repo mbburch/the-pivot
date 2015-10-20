@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class="text-center">Create a New Auction</h1>
+  <%= render partial: "layouts/flash" %>
   <div class="well col-sm-6 col-sm-offset-3">
     <%= form_for :auction, :url => seller_auctions_path do |f| %>
     <div class="form-group">
