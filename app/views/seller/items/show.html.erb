@@ -1,0 +1,12 @@
+<div class="container">
+  <%= render partial: "layouts/flash" %>
+  <div class="col-md-12">
+    <div class="show-item">
+      <%= image_tag @item.avatar.url %>
+      <div class="caption-full">
+          <h5 class="pull-right"><a href="#">
+          <%= render partial: "auction_form" %>
+      </div>
+    </div>
+  </div>
+</div>

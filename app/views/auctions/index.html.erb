@@ -1,0 +1,23 @@
+<div class="col s12 pickgradient" id="home-page">
+  <h1>BidDay</h1>
+  <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&fm=jpg&s=a4598570a3286ea23369fdefe46953ba" alt="" />
+</div>
+<div class="container">
+  <div class="row"></div>
+  <div class="row items">
+    <% @auctions.each do |auction| %>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <%= image_tag auction.item.avatar.url %>
+          <div class="caption">
+            <h4 class="pull-right"></h4>
+            <h4><%= link_to auction.item.title, item_path(auction.item) %></h4>
+            <p><%= auction.item.description %></p>
+            <p>Starting Price: <%= number_to_currency(auction.starting_price) %></p>
+            <p>Current Bid: <%= number_to_currency(auction.item.current_bid) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

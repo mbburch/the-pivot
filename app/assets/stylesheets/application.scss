@@ -19,11 +19,4 @@
 @import "stores";
 @import "footer";
 @import "override";
-
-.img-responsive {
-  margin-top: 50px;
-}
-
-#item-description {
-  margin-top: 80px;
-}
+@import 'item_show'

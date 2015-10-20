@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1 class="store-header"><%= current_store.title.titleize %></h1>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">Store Info</h4>
+    </div>
+    <div class="panel-body">
+        <p>Store Owner: <%= current_store.user.full_name %></p>
+        <p>Contact the Owner: </p>
+        <p>About: </p>
+      </div>
+  </div>
+
+  <div class="row"></div>
+  <div class="row items">
+    <% @auctions.each do |auction| %>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <%= image_tag auction.item.avatar.url %>
+          <div class="caption">
+            <h4 class="pull-right"></h4>
+            <h4><%= link_to auction.item.title, item_path(auction.item) %></h4>
+            <p><%= auction.item.description %></p>
+            <p>Starting Price: <%= number_to_currency(auction.starting_price) %></p>
+            <p>Current Bid: <%= number_to_currency(auction.item.current_bid) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

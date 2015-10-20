@@ -8,14 +8,14 @@
     <% current_user.stores.each do |store| %>
       <li class="collection-item <%= store.title.parameterize %>">
         <div class="row">
-        <h3><%= link_to store.title, store_items_path(store.slug) %></h3>
+        <h3><%= link_to store.title, seller_path(store: store.slug) %></h3>
         </div>
         <div class="row">
-          <%= link_to "Edit", "#", {:class => "waves-effect waves-light btn right"} %>
-          <%= link_to "Delete", "#", {:class => "waves-effect waves-light btn right red"} %>
+          <%= link_to "Edit", edit_store_path(store), :class => "waves-effect waves-light btn right" %>
+          <%= link_to "Delete", store_path(store),:method => :delete,:class => "waves-effect waves-light btn right red"%>
         </div>
       </li>
     <% end %>
   </ul>
-  <%= link_to "Add New Store", "#", {:class => "waves-effect waves-light btn-large"} %>
+  <%= link_to "Add New Store", new_store_path, {:class => "waves-effect waves-light btn-large"} %>
 </div>

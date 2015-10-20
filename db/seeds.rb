@@ -4,13 +4,11 @@ category3 = Category.create(name: "Transportation")
 
 Item.create(title: "Urban Bees",
             description: "Buy local Denver honey.",
-            price: 50,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Fork-Beekeeping.jpg"),
             category: category2)
 
 Item.create(title: "Kitten Mittens",
             description: "Keep your kittens cozy. These mittens are handcrafted by a Capitol Hill artisan who anticipates being able to repay the loan within 6 months of starting her business. She already has a proven customer base.",
-            price: 25,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/3_Kittens_Playing_in_the_Garden.jpg"),
             category: category1)
 
@@ -52,7 +50,6 @@ Store.create(title: "Doggie Treats", user_id: seller.id)
 
 item = Item.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
-            price: 100,
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
             category: category3,
             store_id: store.id)
@@ -64,6 +61,8 @@ class Seed
     generate_categories
     generate_items
     generate_users
+    generate_auctions
+    generate_bids
     # generate_orders
   end
 
@@ -122,7 +121,6 @@ class Seed
       item = Item.create!(
         title:       "#{Faker::Commerce.product_name} #{i}",
         description: Faker::Lorem.paragraph,
-        price:       Faker::Commerce.price,
         # avatar:      open("http://lorempixel.com/320/150"),
         category_id: assign_category(i),
         store_id:    Store.find(Random.new.rand(1..20)).id
@@ -197,6 +195,27 @@ class Seed
     end
   end
 
+  def generate_auctions
+    100.times do |i|
+      auction = Auction.create!(
+        starting_price:  Faker::Commerce.price,
+        item_id: Faker::Number.between(1, 500)
+        )
+      puts "Auction #{i}: #{auction.id} -  created!"
+    end
+  end
+
+  def generate_bids
+    100.times do |i|
+      bid = Bid.create!(
+        amount:  Faker::Commerce.price,
+        auction_id: Faker::Number.between(1, 100),
+        user_id: Faker::Number.between(1, 80)
+        )
+      puts "Bid #{i}: #{bid.id} -  created!"
+    end
+  end
+
   private
 
   def add_item(order)
@@ -209,51 +228,3 @@ class Seed
 end
 
 Seed.new
-
-# category1 = Category.create(name: "Crafts")
-# category2 = Category.create(name: "Agriculture")
-# category3 = Category.create(name: "Transportation")
-#
-# Item.create(title: "Urban Bees",
-#             description: "Buy local Denver honey.",
-#             price: 50,
-#             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Fork-Beekeeping.jpg"),
-#             category: category2)
-#
-# Item.create(title: "Kitten Mittens",
-#             description: "Keep your kittens cozy. These mittens are handcrafted by a Capitol Hill artisan who anticipates being able to repay the item within 6 months of starting her business. She already has a proven customer base.",
-#             price: 25,
-#             avatar: open("https://s3.amazonaws.com/mb-the-pivot/3_Kittens_Playing_in_the_Garden.jpg"),
-#             category: category1)
-#
-# Order.create(user_id: 1,
-#              status: "Ordered",
-#              card_number: "1234123412341234",
-#              card_expiration: "08/20",
-#              total_cost: 50)
-#
-# OrderItem.create(item_id: 1, order_id: 1, quantity: 3)
-# OrderItem.create(item_id: 2, order_id: 1, quantity: 1)
-# OrderItem.create(item_id: 3, order_id: 1, quantity: 2)
-#
-# User.create(username: "admin",
-#             password: "password",
-#             full_name: "Admin Adminerstein",
-#             address: "123 Admin Blvd, Admintown, AD",
-#             role: 2)
-#
-# user = User.create(username: "alice",
-#             password: "password",
-#             full_name: "Alice Jones",
-#             address: "1500 Blake St., Denver, CO 80205")
-#
-# store = Store.create(title: "Adam", user_id: user.id)
-# Store.create(title: "Bob's Big Boys", user_id: user.id)
-# Store.create(title: "Bob's Big Dogs", user_id: user.id)
-#
-# item = Item.create(title: "Bike Bus",
-#             description: "We'll bring our shop to you.",
-#             price: 100,
-#             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
-#             category: category3,
-#             store_id: store.id)

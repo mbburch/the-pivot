@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Admin viewing items" do
   include_context "features"
 
-  scenario "can edit items" do
+  xscenario "can edit items" do
     other_category = Category.create(name: "other category")
     log_in_as("admin", "password")
     visit "/admin/items"
@@ -22,7 +22,7 @@ feature "Admin viewing items" do
     expect(page).to have_content("other test")
   end
 
-  scenario "can not edit items with invalid input" do
+  xscenario "can not edit items with invalid input" do
     log_in_as("admin", "password")
     visit "/admin/items"
     first(".caption").click_link("Edit")

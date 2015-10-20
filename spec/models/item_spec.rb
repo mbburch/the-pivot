@@ -6,8 +6,8 @@ RSpec.describe Item, type: :model do
   before(:each) do
     @item = Item.new(title: "Urban Bees",
                      description: "Buy local Denver honey.",
-                     price: 50,
                      category: category)
+    @bid = Bid.create(amount: 1)
   end
 
   it "is valid" do
@@ -24,24 +24,11 @@ RSpec.describe Item, type: :model do
     expect(@item).to_not be_valid
   end
 
-  it "is invalid without a price" do
-    @item.price = nil
-    expect(@item).to_not be_valid
-  end
-
   it "must have a unique name" do
     @item.save
     new_item = Item.new(title: "Urban Bees",
-                        description: "Buy local Denver honey.",
-                        price: 50)
+                        description: "Buy local Denver honey.")
     expect(new_item).to_not be_valid
-  end
-
-  it "must have a price above zero" do
-    @item.price = 0
-    expect(@item).to_not be_valid
-    @item.price = 1
-    expect(@item).to be_valid
   end
 
   it "must belong to a category" do
