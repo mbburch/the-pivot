@@ -6,6 +6,5 @@ class AuctionsController < ApplicationController
     else
       @auctions = Auction.all
     end
-
   end
 end

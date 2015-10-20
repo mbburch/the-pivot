@@ -16,4 +16,9 @@ RSpec.describe Auction, type: :model do
     auction.starting_price = nil
     expect(auction).to_not be_valid
   end
+
+  it "is invalid with no item" do
+    auction.item_id = nil
+    expect(auction).to_not be_valid
+  end
 end
