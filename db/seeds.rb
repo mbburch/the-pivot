@@ -212,7 +212,9 @@ class Seed
     100.times do |i|
       auction = Auction.create!(
         starting_price:  Faker::Number.between(5, 45),
-        item_id: Faker::Number.between(1, 500)
+        item_id: Faker::Number.between(1, 500),
+        starting_time: DateTime.civil(2015, 10, 20, 5, 0, 0, 0),
+        ending_time: DateTime.civil(2015, 12, 25, 5, 0, 0, 0)
         )
       puts "Auction #{i}: #{auction.id} -  created!"
     end

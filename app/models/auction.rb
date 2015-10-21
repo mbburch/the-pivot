@@ -15,4 +15,18 @@ class Auction < ActiveRecord::Base
   def self.search(query)
     joins(:item).where("title like ?", "%#{query}%")
   end
+
+  def self.open
+    where('starting_time <= ?', Time.now).where('ending_time >= ?', Time.now)
+  end
+
+  def status
+    if starting_time < Time.now && ending_time > Time.now
+      "open"
+    elsif starting_time > Time.now
+      "scheduled"
+    elsif ending_time < Time.now
+      "ended"
+    end
+  end
 end

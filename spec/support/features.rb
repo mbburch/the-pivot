@@ -34,6 +34,10 @@ shared_context "features" do
     Category.create(name: "Other Category")
   end
 
+  let!(:third_category) do
+    Category.create(name: "third Category")
+  end
+
   let!(:item) do
     Item.create(title: "test title",
                 description: "test description",
@@ -44,6 +48,12 @@ shared_context "features" do
     Item.create(title: "other test title",
                 description: "other test description",
                 category: other_category)
+  end
+
+  let!(:third_item) do
+    Item.create(title: "third test title",
+                description: "third test description",
+                category: third_category)
   end
 
   let!(:order) do
@@ -58,6 +68,27 @@ shared_context "features" do
     OrderItem.create(item_id: item.id,
                      quantity: 1,
                      order_id: order.id)
+  end
+
+  let!(:auction) do
+    Auction.create(starting_price: 175,
+                          item_id: item.id,
+                    starting_time: DateTime.now - 4.days,
+                      ending_time: DateTime.now + 4.days)
+  end
+
+  let!(:auction_two) do
+    Auction.create(starting_price: 89,
+                          item_id: other_item.id,
+                    starting_time: DateTime.now + 2.days,
+                      ending_time: DateTime.now + 4.days)
+  end
+
+  let!(:ended_auction) do
+    Auction.create(starting_price: 50,
+                          item_id: other_item.id,
+                    starting_time: DateTime.now - 4.days,
+                      ending_time: DateTime.now - 2.days)
   end
 
   def log_in_as(username, password)
