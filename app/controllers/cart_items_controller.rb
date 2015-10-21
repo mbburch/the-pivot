@@ -1,13 +1,13 @@
 class CartItemsController < ApplicationController
   def create
-    item_cart = cart
-    item_cart.add_item(params)
-    session[:cart] = item_cart.data
-    redirect(params)
+    cart.checkout_status(params[:cart][:auction])
+    session[:cart] = cart.add_item(cart_params)
+    redirect_to :back
   end
 
   def index
-    @items = cart.items
+    item = cart.data.keys
+    @items = Item.find(item)
     @total = cart.total
   end
 
@@ -23,6 +23,10 @@ class CartItemsController < ApplicationController
   end
 
   private
+
+  def cart_params
+    params.require(:cart).permit(:amount, :item_id)
+  end
 
   def redirect(params)
     redirect_to params[:path]

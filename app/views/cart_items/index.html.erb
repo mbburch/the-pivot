@@ -4,27 +4,18 @@
       <%= raw(flash[:notice]) %>
     </div>
   <% end %>
-  <h1 class="lead header">Cart</h1>
+  <h1 class="lead header">Checkout</h1>
   <div class="items">
     <% if @items %>
       <% @items.each do |item| %>
         <div class="row well well-lg">
           <dl class="dl-horizontal">
-          <dt class="thumbnail cart-image"><img src="<%= item.item.avatar.url %>" alt=""></dt>
+          <dt class="thumbnail cart-image"><img src="<%= item.avatar.url %>" alt=""></dt>
           <dd>
             <ul class="list-group">
-              <li class="list-group-item head">Item: <%= item.item.title %></li>
-              <li class="list-group-item">Description: <%= item.item.description %></li>
-              <li class="list-group-item quantity">
-                <%= form_for(:item_quantity, url: "/cart_items/#{item.item.id}", method: :put) do |f| %>
-                  <%= f.label :quantity %>
-                  <%= f.text_field :quantity, placeholder: "#{item.quantity}" %>
-                  <%= f.submit "Change Quantity" %>
-                <% end %>
-              </li>
-              <li class="list-group-item"><%= button_to("Remove Item", "/cart_items/#{item.item.id}",
-                                method: :delete) %></li>
-              <li class="list-group-item">Subtotal: <%= number_to_currency(item.subtotal) %></li>
+              <li class="list-group-item head">Item: <%= item.title %></li>
+              <li class="list-group-item">Description: <%= item.description %></li>
+              <li class="list-group-item">Subtotal: <%= number_to_currency(item.current_bid) %></li>
             </ul>
           <dd>
         </div>
@@ -33,9 +24,8 @@
       <p>Cart is Empty! This ain't no free ride</p>
     <% end %>
     <div class="row">
-      <h2 class="col-md-6">Total Price: <%= number_to_currency(@total) %></h2>
-      <h2 id="checkout" class="btn btn-success btn-lg pull-right">
-      <%= link_to "Checkout", new_order_path %></h2>
+      <h4 class="col-md-10">Total Price: <%= number_to_currency(@total) %></h4>
+      <h4 id="checkout"><%= link_to "Checkout", new_order_path, {:class => "waves-effect waves-light btn"} %></h4>
     </div>
   </div>
 </div>

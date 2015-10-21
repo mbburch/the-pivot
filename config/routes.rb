@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   resources :bids, only: [:new, :create]
   resources :orders, only: [:new, :create, :show]
   resources :auctions, only: [:index]
-  resources :stores
+  resources :stores, only: [:index, :show]
+  # resources :cart_items
 
 
   post "/cart_items", to: "cart_items#create"
   get "/cart", to: "cart_items#index"
-  put "/cart_items/:id", to: "cart_items#update"
+  # put "/cart_items/:id", to: "cart_items#update"
   delete "/cart_items/:id", to: "cart_items#destroy"
 
   get "/login", to: "sessions#new"
