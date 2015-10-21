@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#show"
   get "/edit", to: "users#edit"
   put "/edit", to: "users#update"
-  get "/dashboard", to: "users#show"
   get "/register", to: "users#new"
   post "/register", to: "users#create"
 
@@ -37,7 +36,7 @@ Rails.application.routes.draw do
     get "/dashboard", to: "sellers#show"
     get "/:store/auctions", to: "auctions#index"
     resources :auctions, only: [:new, :create]
-    resources :items, only: [:show]
+    resources :items, only: [:new, :create, :edit, :update]
   end
 
   namespace :stores, path: ':store', as: :store do
