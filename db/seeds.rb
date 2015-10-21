@@ -117,11 +117,25 @@ class Seed
   end
 
   def generate_items
+    avatars = ["https://s3.amazonaws.com/mb-the-pivot/Hello_Kitty_Dreamcast.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/Atari-7800-wControl-Pad-L.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/BLW_Camel_teapot.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/Berliet_Coming_Out_Dinky_Toys_France_584.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/GobotToys.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/Hornby_9F_2-10-0_Evening_star.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/HotWheels.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/NutcrackerCollection.JPG",
+               "https://s3.amazonaws.com/mb-the-pivot/Pog_Collection.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/Schwinn_StingRay_OrangeKrate_5speed_1968.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/Stamp_album_sleeve.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/Stereoscoop_VM.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/Two_20kr_gold_coins.jpg",
+               "https://s3.amazonaws.com/mb-the-pivot/US_mail_letterbox.jpg"]
     1.upto(500) do |i|
       item = Item.create!(
         title:       "#{Faker::Commerce.product_name} #{i}",
         description: Faker::Lorem.paragraph,
-        # avatar:      open("http://lorempixel.com/320/150"),
+        avatar:      open(avatars.shuffle[rand]),
         category_id: assign_category(i),
         store_id:    Store.find(Random.new.rand(1..20)).id
         )
