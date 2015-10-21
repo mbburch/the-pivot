@@ -8,6 +8,15 @@ shared_context "features" do
                 role: 1)
   end
 
+  let!(:seller) do
+    User.create(username: "seller",
+                password: "password",
+                full_name: "Seller McSellerson",
+                address: "123 Buy Blvd, Shoptown, USA",
+                email: "seller@example.com",
+                role: 2)
+  end
+
   let!(:user) do
     User.create(username: "alice",
                 password: "password",
