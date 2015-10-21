@@ -6,11 +6,11 @@ class Seller::AuctionsController < Seller::SellersController
 
   def new
     @seller = User.find_by(username: params[:seller])
-    @items = @seller.items
+    @items  = @seller.items
   end
 
   def create
-    auction = Auction.create(auction_params)
+    auction = Auction.create(auction_params.except(:store_id))
     if auction.save
       flash[:notice] = "Your auction is all set!"
     else

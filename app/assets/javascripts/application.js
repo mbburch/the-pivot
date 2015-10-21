@@ -15,3 +15,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function() {
+    $('#start_time > select').material_select();
+    $('#end_time > select').material_select();
+});

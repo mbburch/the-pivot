@@ -19,6 +19,7 @@ gem "rubocop"
 gem "bootstrap-sass"
 gem "faker"
 
+
 group :development, :test do
   gem "byebug"
   gem "pry-rails"
@@ -28,6 +29,7 @@ group :development, :test do
   gem "simplecov", require: false
   gem 'shoulda-matchers', '~> 3.0'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 group :development do

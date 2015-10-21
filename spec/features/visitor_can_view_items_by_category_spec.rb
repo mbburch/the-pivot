@@ -12,8 +12,12 @@ feature "visitor can view items by category" do
     item2 = Item.create!(title: "Second Item",
                         description: "other test description",
                         category: other_category)
-    Auction.create!(starting_price: 20, item_id: item.id)
-    Auction.create!(starting_price: 15, item_id: item2.id)
+    Auction.create!(starting_price: 20, item_id: item.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
+    Auction.create!(starting_price: 15, item_id: item2.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
     visit "/auctions"
     click_on "Categories"
     click_on "Wool"
@@ -40,8 +44,12 @@ feature "visitor can view items by category" do
     item2 = Item.create!(title: "Second Item",
                         description: "other test description",
                         category: other_category)
-    Auction.create!(starting_price: 20, item_id: item.id)
-    Auction.create!(starting_price: 15, item_id: item2.id)
+    Auction.create!(starting_price: 20, item_id: item.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
+    Auction.create!(starting_price: 15, item_id: item2.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
     visit "/categories/#{category.id}"
     within(".header") do
       expect(page).to have_content("Wool")

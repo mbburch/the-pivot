@@ -5,7 +5,9 @@ feature "user cannot place a bid" do
 
   scenario "as a guest user" do
     item = Item.first
-    auction = Auction.create(starting_price: 15, item_id: item.id)
+    auction = Auction.create(starting_price: 15, item_id: item.id,
+                              starting_time: DateTime.now - 4.days,
+                                ending_time: DateTime.now + 4.days)
     visit item_path(item)
     expect(current_path).to eq(item_path(item))
     expect(page).to have_content("Current Bid")
