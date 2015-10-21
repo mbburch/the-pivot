@@ -18,8 +18,17 @@ class Bid < ActiveRecord::Base
     highest_bid = self.auction.highest_bid
     if self[:amount] >= highest_bid
       self[:status] = "Winning Bid"
+      payment_status
     else
       self[:status] = "Losing Bid"
+    end
+  end
+
+  def payment_status
+    if self.auction.status == "over"
+      self[:status] = "pending"
+    else
+      self[:status] = "Winning Bid"
     end
   end
 end
