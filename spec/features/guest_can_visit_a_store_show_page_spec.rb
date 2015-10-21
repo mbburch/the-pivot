@@ -13,7 +13,9 @@ feature "user can visit a store" do
             avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
             category: Category.create(name: "Transportation"),
             store_id: store.id)
-    Auction.create(item_id: item.id, starting_price: 15)
+    Auction.create(item_id: item.id, starting_price: 15,
+           starting_time: DateTime.now - 4.days,
+             ending_time: DateTime.now + 4.days)
 
     visit stores_path
     expect(page).to have_content("Adam")

@@ -19,4 +19,12 @@
 @import "stores";
 @import "footer";
 @import "override";
-@import 'item_show'
+@import 'item_show';
+
+.select-wrapper .caret{
+    display: none;
+}
+
+#start_time input {
+
+}
