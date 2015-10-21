@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
 
   has_attached_file :avatar,
                     styles: { medium: "800x300#", thumb: "320x150#" },
-                    default_url: "https://s3.amazonaws.com/turing-denvestments/assets/Richard_Stallman_by_Anders_Brenna_01.jpg"
+                    default_url: "https://s3.amazonaws.com/mb-the-pivot/Original_1976_Apple_1_Computer_In_A_Briefcase.JPG"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   def current_bid
