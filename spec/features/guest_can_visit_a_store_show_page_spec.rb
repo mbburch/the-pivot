@@ -10,9 +10,12 @@ feature "user can visit a store" do
     store = Store.create(title: "Adam", description: "We sell everything", user_id: user.id)
     item  = Item.create(title: "Bike Bus",
             description: "We'll bring our shop to you.",
+            avatar: open("https://s3.amazonaws.com/mb-the-pivot/Hilltop_Bicycles_Summit_NJ.JPG"),
             category: Category.create(name: "Transportation"),
             store_id: store.id)
-            Auction.create(starting_price: 10, item_id: item.id)
+    Auction.create(item_id: item.id, starting_price: 15,
+           starting_time: DateTime.now - 4.days,
+             ending_time: DateTime.now + 4.days)
 
     visit stores_path
     expect(page).to have_content("Adam")

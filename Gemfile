@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "2.2.1"
 
 gem "rails", "4.2.4"
 gem "pg"
@@ -18,6 +19,7 @@ gem "rubocop"
 gem "bootstrap-sass"
 gem "faker"
 
+
 group :development, :test do
   gem "byebug"
   gem "pry-rails"
@@ -27,6 +29,7 @@ group :development, :test do
   gem "simplecov", require: false
   gem 'shoulda-matchers', '~> 3.0'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 group :development do

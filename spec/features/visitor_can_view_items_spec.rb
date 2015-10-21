@@ -10,8 +10,12 @@ feature "visitor viewing auctions" do
     item2 = Item.create!(title: "Second Item",
                         description: "other test description",
                         category: other_category)
-    Auction.create!(starting_price: 20, item_id: item.id)
-    Auction.create!(starting_price: 15, item_id: item2.id)
+    Auction.create!(starting_price: 20, item_id: item.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
+    Auction.create!(starting_price: 15, item_id: item2.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
     visit "/auctions"
     within(".nav-wrapper") do
       expect(page).to have_content("Auctions")
@@ -30,8 +34,12 @@ feature "visitor viewing auctions" do
     item2 = Item.create!(title: "Second Item",
                         description: "other test description",
                         category: other_category)
-    Auction.create!(starting_price: 20, item_id: item.id)
-    Auction.create!(starting_price: 15, item_id: item2.id)
+    Auction.create!(starting_price: 20, item_id: item.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
+    Auction.create!(starting_price: 15, item_id: item2.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
     visit "/auctions"
 
     expect(page).to have_content("First Item")

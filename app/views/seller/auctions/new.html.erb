@@ -11,18 +11,18 @@
     <div class="form-group">
       <%= f.label :item_id %>
       <%= f.collection_select :item_id, Item.where(id: @items),
-                              :id, :title,{}, { class: "form-control", include_blank: "None"} %>
+                              :id, :title,{}, { class: "form-control"} %>
     <div class="form-group">
       <%= f.label :starting_price %>
-      <%= f.text_field :starting_price, class: "form-control" %>
+      <%= f.text_field :starting_price, class: "form-control", value: "$" %>
     </div>
-    <div class="form-group">
+    <div class="form-group" id="start_time">
       <%= f.label :starting_time %>
-      <%= select_datetime DateTime.now, prefix: :starting_time, ampm: true %>
+      <%= f.datetime_select :starting_time, ampm: true, value: DateTime.now %>
     </div>
-    <div class="form-group">
+    <div class="form-group" id="end_time">
       <%= f.label :ending_time %>
-      <%= select_datetime DateTime.now, prefix: :ending_time, ampm: true %>
+      <%= f.datetime_select :ending_time, ampm: true, value: 2.days.from_now  %>
     </div>
       <%= f.submit "Create Auction", class: "btn btn medium" %>
     <% end %>

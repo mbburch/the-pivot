@@ -10,7 +10,9 @@ feature "user visits home page" do
     item2 = Item.create!(title: "Second Item",
                         description: "other test description",
                         category: other_category)
-    Auction.create!(starting_price: 20, item_id: item.id)
+    Auction.create!(starting_price: 20, item_id: item.id,
+                     starting_time: DateTime.now - 4.days,
+                       ending_time: DateTime.now + 4.days)
     visit '/'
     expect(page).to have_content("BidDay")
     expect(page).to have_content("First Item")
