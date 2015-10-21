@@ -1,6 +1,6 @@
 <ul>
 <% current_user.bids.each do |bid| %>
-  <li>Auction Item: <%= bid.auction.item.title %>
+  <li>Auction Item: <%= bid.auction.item.title %></li>
   <li>Starting Price: $<%= bid.auction.starting_price %></li>
   <li>Current Highest Bid: $<%= bid.auction.highest_bid %></li>
   <li>Your Current Bid: $<%= bid.amount %></li>
