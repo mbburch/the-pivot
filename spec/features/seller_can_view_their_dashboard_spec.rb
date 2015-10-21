@@ -38,14 +38,14 @@ feature "seller can view store items" do
   end
 
   scenario "a seller cant see other sellers page" do
-    user  = User.create(username: "alice",
+    user  = User.new(username: "alice",
                         password: "password",
                         full_name: "Alice Jones",
                         address: "1500 Blake St., Denver, CO 80205",
                         email: "alice@example.com",
                         role: 2)
 
-    other_seller = User.create(username: "bob",
+    other_seller = User.new(username: "bob",
                                password: "password",
                                full_name: "Bob Jones",
                                address: "1500 Blake St., Denver, CO 80205",
