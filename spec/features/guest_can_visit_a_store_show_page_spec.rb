@@ -21,7 +21,7 @@ feature "user can visit a store" do
     expect(page).to have_content("Adam")
     expect(page).to have_content("We sell everything")
     click_on "Adam"
-    expect(current_path).to eq(store_auctions_path(store.slug))
     expect(page).to have_content("We'll bring our shop to you.")
+    expect(current_path).to eq(store_auctions_path(store.slug))
   end
 end

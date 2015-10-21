@@ -20,7 +20,7 @@ class Auction < ActiveRecord::Base
     where('starting_time <= ?', Time.now).where('ending_time >= ?', Time.now)
   end
 
-  def status
+  def time_status
     if starting_time < Time.now && ending_time > Time.now
       "open"
     elsif starting_time > Time.now

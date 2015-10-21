@@ -25,10 +25,9 @@
       <li><a href="/stores">Browse Stores</a></li>
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
       <!-- Dropdown Trigger -->
-      <li><a href="/cart">Items in Cart: <%= session[:cart].values.sum if session[:cart] %></a></li>
+      <li><a href="/cart">Items in Cart: <%= session[:cart].keys.count if session[:cart] %></a></li>
       <li><a id="cart" href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
     </ul>
-
   </div>
 </nav>
 

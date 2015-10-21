@@ -99,7 +99,7 @@ shared_context "features" do
                          status: "Ordered")
   end
 
-  let!(:auction) do
+  let!(:auction_one) do
     Auction.create(starting_price: 175,
                           item_id: item.id,
                     starting_time: DateTime.now - 4.days,
@@ -120,18 +120,20 @@ shared_context "features" do
                       ending_time: DateTime.now - 2.days)
   end
 
-  let!(:bid) do
+  let!(:low_bid) do
     Bid.create(amount: 200,
-              user_id: user.id)
+              user_id: user.id,
+              auction: auction_one)
   end
 
   let!(:higher_bid) do
-    Bid.create(amount: 201 ,
-              user_id: user.id)
+    Bid.create(amount: 201,
+              user_id: user.id,
+              auction: auction_one)
   end
 
   let!(:winning_bid) do
-    Bid.create(amount: 400 ,
+    Bid.create(amount: 400,
               user_id: user_two.id)
   end
 

@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   post "/cart_items", to: "cart_items#create"
   get "/cart", to: "cart_items#index"
-  put "/cart_items/:id", to: "cart_items#update"
-  delete "/cart_items/:id", to: "cart_items#destroy"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -34,7 +32,7 @@ Rails.application.routes.draw do
   namespace :seller, path: ':seller', as: :seller do
     get "/dashboard", to: "sellers#show"
     get "/:store/auctions", to: "auctions#index"
-    resources :auctions
+    resources :auctions, only: [:new, :create]
     resources :items
   end
 

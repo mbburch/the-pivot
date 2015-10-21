@@ -5,6 +5,7 @@ class UserOrder
   end
 
   def create_order
+    require 'pry'; binding.pry
     @order = Order.create(user_id: @session[:user_id],
                           card_number: @params[:order][:card_number],
                           card_expiration: @params[:order][:card_expiration],

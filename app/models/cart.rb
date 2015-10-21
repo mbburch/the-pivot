@@ -7,9 +7,16 @@ class Cart
   end
 
   def add_item(params)
-    item = Item.find(params[:item_id].to_i)
-    @cart[item.id.to_s] ||= 0
-    @cart[item.id.to_s] += 1
+    item = {params[:item_id].to_i => params[:amount].to_i}
+    @cart.merge(item) do |_key, old_val, new_val|
+      (old_val.to_i + new_val.to_i).to_s
+    end
+  end
+
+  def checkout_status(auction)
+    auction = Auction.find(auction)
+    auction.status = "paid"
+    auction.save
   end
 
   def data
@@ -24,6 +31,6 @@ class Cart
   end
 
   def total
-    items.map(&:subtotal).sum
+    cart.values.sum
   end
 end

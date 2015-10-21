@@ -13,7 +13,7 @@
       </tr>
       <% @stores.each do |store| %>
         <tr>
-          <td class="store-title"><%= link_to store.title.titleize, store_auctions_path(store: store.slug) %></td>
+          <td class="store-title"><%= link_to store.title.titleize, store_auctions_path(store.slug) %></td>
           <td><%= store.description %><td>
           <td><%= store.user.full_name %></td>
         </tr>
