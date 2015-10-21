@@ -128,7 +128,8 @@ shared_context "features" do
 
   let!(:higher_bid) do
     Bid.create(amount: 201,
-              user_id: user.id)
+              user_id: user.id,
+              auction: auction_one)
   end
 
   let!(:winning_bid) do

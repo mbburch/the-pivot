@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :bids, only: [:new, :create]
   resources :orders, only: [:new, :create, :show]
   resources :auctions, only: [:index]
-  resources :stores, only: [:index, :show]
+  resources :stores
 
 
   post "/cart_items", to: "cart_items#create"
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   namespace :seller, path: ':seller', as: :seller do
     get "/dashboard", to: "sellers#show"
     get "/:store/auctions", to: "auctions#index"
-    resources :auctions
+    resources :auctions, only: [:new, :create]
     resources :items
   end
 
