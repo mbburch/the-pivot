@@ -8,18 +8,19 @@ feature "Seller can edit auction items" do
     visit "/seller/dashboard"
     click_on store1.title
     expect(current_path).to eq("/seller/hats-hats-hats/auctions")
-    first(".caption").click_link("Edit")
-    fill_in ""
+    save_and_open_page
+    first(".caption").click_link("Edit Item Info")
     fill_in "item[title]", with: "updated title"
     fill_in "item[description]", with: "updated description"
-    select "other category", from: "item[category_id]"
-    click_on("Submit")
-    expect(current_path).to eq(item_path(item))
-    expect(page).to have_content("other test")
-    expect(page).to have_content("other test description")
+    select "Other Category", from: "item[category_id]"
+    click_on("Edit Item")
+    expect(current_path).to eq("/seller/items/#{item.id}")
+    expect(page).to have_content("updated title")
+    expect(page).to have_content("updated description")
     visit "/categories/#{other_category.id}"
-    expect(page).to have_content("other test")
-    expect(page).to have_content("You have successfully edited Updated Title.")
+    expect(page).to have_content("updated title")
+    save_and_open_page
+    expect(page).to have_content("Updated Title was successfully edited.")
   end
 
   scenario "can not edit auction items with current bids" do
@@ -27,12 +28,9 @@ feature "Seller can edit auction items" do
     visit "/seller/dashboard"
     click_on store2.title
     expect(current_path).to eq("/seller/handmade-wallets/auctions")
-    second(".caption").click_link("Edit")
-    fill_in "item[title]", with: "updated title two"
-    fill_in "item[description]", with: "updated description two"
-    select "category", from: "item[category_id]"
-    click_on("Submit")
-    expect(current_path).to eq("/seller/items/#{item.id}/edit")
-    expect(page).to have_content("You may not edit an auction with a current bid.")
+    within first(".caption") do
+      expect(page).to have_content("Unable to Edit: Active Bid")
+      expect(page).to_not have_link("Edit Item")
+    end
   end
 end

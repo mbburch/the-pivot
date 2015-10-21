@@ -19,12 +19,6 @@ class Seller::AuctionsController < Seller::SellersController
     redirect_to :back
   end
 
-  def edit
-    @item = Item.find(params[:id])
-    @auction = @item.auction
-    @seller = User.find_by(username: params[:seller])
-  end
-
   private
 
     def auction_params

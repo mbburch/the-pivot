@@ -18,12 +18,12 @@ shared_context "features" do
   end
 
   let!(:user) do
-    User.create(username: "alice",
-                password: "password",
-                full_name: "Alice Smith",
-                address: "123 Main St. Anytown, USA",
-                email: "user2@example.com",
-                role: 0)
+    user = User.create(username: "alice",
+                       password: "password",
+                       full_name: "Alice Smith",
+                       address: "123 Main St. Anytown, USA",
+                       email: "user2@example.com",
+                       role: 0)
   end
 
   let!(:category) do
@@ -49,7 +49,11 @@ shared_context "features" do
   end
 
   let!(:auction) do
-    Auction.create(item_id: other_item.id, starting_price: 15)
+    auction = Auction.create(item_id: other_item.id, starting_price: 15)
+  end
+
+  let!(:bid) do
+    Bid.create(amount: 20, auction_id: auction.id, user_id: user.id)
   end
 
   let!(:store1) do

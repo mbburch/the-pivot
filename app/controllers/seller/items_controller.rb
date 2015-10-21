@@ -15,6 +15,22 @@ class Seller::ItemsController < Seller::SellersController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @seller = User.find_by(username: params[:seller])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      flash[:notice] = "#{item.title} was successfully edited."
+      redirect_to seller_item_path
+    else
+      flash[:notice] = item.errors.full_messages.join(", ")
+      redirect_to edit_seller_item_path
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
   end
