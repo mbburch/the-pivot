@@ -9,6 +9,8 @@ require "rspec/rails"
 require "capybara/rspec"
 require "capybara/rails"
 require "simplecov"
+require "database_cleaner"
+
 SimpleCov.start "rails"
 ActiveRecord::Migration.maintain_test_schema!
 

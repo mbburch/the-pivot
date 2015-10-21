@@ -7,8 +7,12 @@ feature "Seller can edit auction items" do
     log_in_as("seller", "password")
     visit "/seller/dashboard"
     click_on store1.title
+
+    expect(store1.items.flat_map(&:auctions)).to_not be_empty
+    expect(store2.items.flat_map(&:auctions)).to_not be_empty
+
     expect(current_path).to eq("/seller/hats-hats-hats/auctions")
-    save_and_open_page
+
     first(".caption").click_link("Edit Item Info")
     fill_in "item[title]", with: "updated title"
     fill_in "item[description]", with: "updated description"
@@ -17,10 +21,7 @@ feature "Seller can edit auction items" do
     expect(current_path).to eq("/seller/items/#{item.id}")
     expect(page).to have_content("updated title")
     expect(page).to have_content("updated description")
-    visit "/categories/#{other_category.id}"
-    expect(page).to have_content("updated title")
-    save_and_open_page
-    expect(page).to have_content("Updated Title was successfully edited.")
+    expect(page).to have_content("updated title was successfully edited.")
   end
 
   scenario "can not edit auction items with current bids" do

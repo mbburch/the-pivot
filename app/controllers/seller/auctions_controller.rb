@@ -1,7 +1,7 @@
 class Seller::AuctionsController < Seller::SellersController
 
   def index
-    @auctions = Auction.all
+    @auctions = Store.find_by(slug: params[:store]).items.flat_map(&:auctions)
   end
 
   def new

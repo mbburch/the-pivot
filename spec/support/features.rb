@@ -1,11 +1,11 @@
 shared_context "features" do
   let!(:admin) do
-    User.create(username: "admin",
-                password: "password",
-                full_name: "Admin Adminerstein",
-                address: "123 Admin Blvd, Admintown, USA",
-                email: "user1@example.com",
-                role: 1)
+    admin = User.create(username: "admin",
+                        password: "password",
+                        full_name: "Admin Adminerstein",
+                        address: "123 Admin Blvd, Admintown, USA",
+                        email: "user1@example.com",
+                        role: 1)
   end
 
   let!(:seller) do
@@ -27,59 +27,49 @@ shared_context "features" do
   end
 
   let!(:category) do
-    Category.create(name: "Test Category")
+    category = Category.create(name: "Test Category")
   end
 
   let!(:other_category) do
-    Category.create(name: "Other Category")
+    other_category = Category.create(name: "Other Category")
   end
 
   let!(:item) do
     item = Item.create(title: "test title",
                        description: "test description",
-                       store_id: store1.id,
+                       store: store1,
                        category: category)
+  end
+
+  let!(:bidless_auction) do
+    auction = Auction.create(item: item, starting_price: 15)
   end
 
   let!(:other_item) do
     other_item = Item.create(title: "other test title",
                              description: "other test description",
-                             store_id: store2.id,
+                             store: store2,
                              category: other_category)
   end
 
   let!(:auction) do
-    auction = Auction.create(item_id: other_item.id, starting_price: 15)
+    auction = Auction.create(item: other_item, starting_price: 15)
   end
 
   let!(:bid) do
-    Bid.create(amount: 20, auction_id: auction.id, user_id: user.id)
+    Bid.create(amount: 20, auction: auction, user: user)
   end
 
   let!(:store1) do
     store1 = Store.create( title: "hats hats hats",
-                          description: "Never leave your head uncovered.",
-                          user_id: seller.id)
+                           description: "Never leave your head uncovered.",
+                           user: seller)
   end
 
   let!(:store2) do
     store2 = Store.create( title: "handmade wallets",
                            description: "Put your money here.",
-                           user_id: seller.id)
-  end
-
-  let!(:order) do
-    order = Order.create(user_id: user.id,
-                         card_number: "1234",
-                         card_expiration: "09/10",
-                         total_cost: 100.50,
-                         status: "Ordered")
-  end
-
-  let!(:order_item) do
-    OrderItem.create(item_id: item.id,
-                     quantity: 1,
-                     order_id: order.id)
+                           user: seller)
   end
 
   def log_in_as(username, password)
