@@ -25,6 +25,13 @@
             <p><%= auction.item.description %></p>
             <p>Starting Price: <%= number_to_currency(auction.starting_price) %></p>
             <p>Current Highest Bid: <%= number_to_currency(auction.item.current_bid) %></p>
+            <div class="row">
+              <% if auction.item.current_bid > 0 %>
+                <button class="waves-effect waves-light btn right">Unable to Edit: Active Bid</button>
+              <% else %>
+                <%= link_to "Edit Item Info", edit_seller_item_path(id: auction.item.id), :class => "waves-effect waves-light btn right" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
