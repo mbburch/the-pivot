@@ -118,7 +118,6 @@ class Seed
 
   def generate_items
     avatars = ["https://s3.amazonaws.com/mb-the-pivot/Hello_Kitty_Dreamcast.jpg",
-               "https://s3.amazonaws.com/mb-the-pivot/Atari-7800-wControl-Pad-L.jpg",
                "https://s3.amazonaws.com/mb-the-pivot/BLW_Camel_teapot.jpg",
                "https://s3.amazonaws.com/mb-the-pivot/Berliet_Coming_Out_Dinky_Toys_France_584.jpg",
                "https://s3.amazonaws.com/mb-the-pivot/GobotToys.jpg",
