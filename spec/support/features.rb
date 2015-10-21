@@ -9,12 +9,12 @@ shared_context "features" do
   end
 
   let!(:seller) do
-    User.create(username: "seller",
-                password: "password",
-                full_name: "Seller McSellerson",
-                address: "123 Buy Blvd, Shoptown, USA",
-                email: "seller@example.com",
-                role: 2)
+    seller = User.create(username: "seller",
+                         password: "password",
+                         full_name: "Seller McSellerson",
+                         address: "123 Buy Blvd, Shoptown, USA",
+                         email: "seller@example.com",
+                         role: 2)
   end
 
   let!(:user) do
@@ -35,15 +35,33 @@ shared_context "features" do
   end
 
   let!(:item) do
-    Item.create(title: "test title",
-                description: "test description",
-                category: category)
+    item = Item.create(title: "test title",
+                       description: "test description",
+                       store_id: store1.id,
+                       category: category)
   end
 
   let!(:other_item) do
-    Item.create(title: "other test title",
-                description: "other test description",
-                category: other_category)
+    other_item = Item.create(title: "other test title",
+                             description: "other test description",
+                             store_id: store2.id,
+                             category: other_category)
+  end
+
+  let!(:auction) do
+    Auction.create(item_id: other_item.id, starting_price: 15)
+  end
+
+  let!(:store1) do
+    store1 = Store.create( title: "hats hats hats",
+                          description: "Never leave your head uncovered.",
+                          user_id: seller.id)
+  end
+
+  let!(:store2) do
+    store2 = Store.create( title: "handmade wallets",
+                           description: "Put your money here.",
+                           user_id: seller.id)
   end
 
   let!(:order) do
