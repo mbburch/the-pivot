@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20151019232734) do
   create_table "auctions", force: :cascade do |t|
     t.integer  "item_id"
     t.decimal  "starting_price"
-    t.datetime "starting_time"
-    t.datetime "ending_time"
+    t.datetime "starting_time",     null: false
+    t.datetime "ending_time",       null: false
     t.string   "status",         default: "open"
   end
 
