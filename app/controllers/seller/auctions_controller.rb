@@ -10,6 +10,7 @@ class Seller::AuctionsController < Seller::SellersController
   end
 
   def create
+    byebug
     auction = Auction.create(auction_params.except(:store_id))
     if auction.save
       flash[:notice] = "Your auction is all set!"

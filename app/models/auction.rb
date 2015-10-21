@@ -8,12 +8,12 @@ class Auction < ActiveRecord::Base
   validates :starting_price, :numericality => { :greater_than => 0}, presence: true
   validates :item_id, presence: true
 
-  def highest_bid
-    bids.maximum(:amount)
-  end
-
   def self.search(query)
     joins(:item).where("title like ?", "%#{query}%")
+  end
+
+  def highest_bid
+    bids.maximum(:amount)
   end
 
   def self.open
@@ -28,5 +28,12 @@ class Auction < ActiveRecord::Base
     elsif ending_time < Time.now
       "ended"
     end
+  end
+
+  def winner
+    winner = bids.max_by do |bid|
+      bid.amount
+    end
+    winner.user
   end
 end

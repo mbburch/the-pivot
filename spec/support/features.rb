@@ -26,6 +26,15 @@ shared_context "features" do
                 role: 0)
   end
 
+  let!(:user_two) do
+    User.create(username: "Beth",
+                password: "password",
+                full_name: "Beth Sanches",
+                address: "10 birch rd. Scranton, USA",
+                email: "beth2@example.com",
+                role: 0)
+  end
+
   let!(:category) do
     Category.create(name: "Test Category")
   end
@@ -89,6 +98,21 @@ shared_context "features" do
                           item_id: other_item.id,
                     starting_time: DateTime.now - 4.days,
                       ending_time: DateTime.now - 2.days)
+  end
+
+  let!(:bid) do
+    Bid.create(amount: 200,
+              user_id: user.id)
+  end
+
+  let!(:higher_bid) do
+    Bid.create(amount: 201 ,
+              user_id: user.id)
+  end
+
+  let!(:winning_bid) do
+    Bid.create(amount: 400 ,
+              user_id: user_two.id)
   end
 
   def log_in_as(username, password)

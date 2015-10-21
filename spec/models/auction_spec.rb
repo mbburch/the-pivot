@@ -39,12 +39,33 @@ RSpec.describe Auction, type: :model do
   end
 
   it "can be ended" do
-    
+    expect(auction.status).to eq("open")
+    auction.ending_time = Time.now - 1.minute
+    expect(auction.status).to eq("ended")
   end
 
+  it "knows the final bid amount when ended" do
+    auction.bids << bid
+    expect(bid.status).to eq("Winning Bid")
 
+    auction.bids << higher_bid
+    expect(higher_bid.status).to eq("Winning Bid")
 
+    auction.ending_time = Time.now - 1.minute
+    expect(auction.status).to eq("ended")
 
+    expect(auction.highest_bid).to eq(201)
+  end
 
+  it "knows the winning user of the auction" do
+    expect(auction.status).to eq("open")
+    auction.bids << bid
+    auction.bids << higher_bid
+    auction.bids << winning_bid
 
+    auction.ending_time = Time.now - 1.minute
+    expect(auction.status).to eq("ended")
+    expect(auction.highest_bid).to eq(400)
+    expect(auction.winner).to eq(user_two)
+  end
 end
