@@ -6,7 +6,9 @@ feature "guest can navigate to the auction show page" do
   scenario "as a guest user" do
     item = Item.find_by(title: "test title")
     Auction.create(starting_price: 50,
-                   item_id: item.id)
+                          item_id: item.id,
+                    starting_time: DateTime.now - 4.days,
+                      ending_time: DateTime.now + 4.days)
 
     visit "/auctions"
     click_on "test title"

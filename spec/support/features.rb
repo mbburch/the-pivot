@@ -26,12 +26,25 @@ shared_context "features" do
                 role: 0)
   end
 
+  let!(:user_two) do
+    User.create(username: "Beth",
+                password: "password",
+                full_name: "Beth Sanches",
+                address: "10 birch rd. Scranton, USA",
+                email: "beth2@example.com",
+                role: 0)
+  end
+
   let!(:category) do
     Category.create(name: "Test Category")
   end
 
   let!(:other_category) do
     Category.create(name: "Other Category")
+  end
+
+  let!(:third_category) do
+    Category.create(name: "third Category")
   end
 
   let!(:item) do
@@ -46,6 +59,12 @@ shared_context "features" do
                 category: other_category)
   end
 
+  let!(:third_item) do
+    Item.create(title: "third test title",
+                description: "third test description",
+                category: third_category)
+  end
+
   let!(:order) do
     order = Order.create(user_id: user.id,
                          card_number: "1234",
@@ -58,6 +77,42 @@ shared_context "features" do
     OrderItem.create(item_id: item.id,
                      quantity: 1,
                      order_id: order.id)
+  end
+
+  let!(:auction) do
+    Auction.create(starting_price: 175,
+                          item_id: item.id,
+                    starting_time: DateTime.now - 4.days,
+                      ending_time: DateTime.now + 4.days)
+  end
+
+  let!(:auction_two) do
+    Auction.create(starting_price: 89,
+                          item_id: other_item.id,
+                    starting_time: DateTime.now + 2.days,
+                      ending_time: DateTime.now + 4.days)
+  end
+
+  let!(:ended_auction) do
+    Auction.create(starting_price: 50,
+                          item_id: other_item.id,
+                    starting_time: DateTime.now - 4.days,
+                      ending_time: DateTime.now - 2.days)
+  end
+
+  let!(:bid) do
+    Bid.create(amount: 200,
+              user_id: user.id)
+  end
+
+  let!(:higher_bid) do
+    Bid.create(amount: 201 ,
+              user_id: user.id)
+  end
+
+  let!(:winning_bid) do
+    Bid.create(amount: 400 ,
+              user_id: user_two.id)
   end
 
   def log_in_as(username, password)
