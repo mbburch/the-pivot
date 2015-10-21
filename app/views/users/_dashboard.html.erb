@@ -1,28 +1,27 @@
-<div class="row">
-      <div class="col s1">1</div>
-      <div class="col s1">2</div>
-      <div class="col s1">3</div>
-      <div class="col s1">4</div>
-      <div class="col s1">5</div>
-      <div class="col s1">6</div>
-      <div class="col s1">7</div>
-      <div class="col s1">8</div>
-      <div class="col s1">9</div>
-      <div class="col s1">10</div>
-      <div class="col s1">11</div>
-      <div class="col s1">12</div>
-</div>
+<table class="boardered centered highlight" >
+  <thead>
+    <tr>
+        <th data-field="name">Auction Item</th>
+        <th data-field="price">Starting Price</th>
+        <th data-field="high-bid">Current Highest Bid</th>
+        <th data-field="your-bid">Your Current Bid</th>
+        <th data-field="status">Bid Status</th>
+    </tr>
+  </thead>
 
-
-<ul>
-<% current_user.bids.each do |bid| %>
-  <li>Auction Item: <%= link_to bid.auction.item.title, item_path(bid.auction.item) %>
-  <li>Starting Price: $<%= bid.auction.starting_price %></li>
-  <li>Current Highest Bid: $<%= bid.auction.highest_bid %></li>
-  <li>Your Current Bid: $<%= bid.amount %></li>
-  <li>Bid Status: <%= bid.status %></li><br>
-    <% if bid.status == "Losing Bid" %>
-      <%= link_to "Update Your Bid", item_path(bid.auction.item), class: "btn btn-primary" %><br><br>
+  <tbody>
+    <% current_user.bids.each do |bid| %>
+    <tr>
+      <td><%= link_to bid.auction.item.title, item_path(bid.auction.item) %></td>
+      <td><%= "#{number_to_currency(bid.auction.starting_price)}" %></td>
+      <td><%= "#{number_to_currency(bid.auction.highest_bid)}" %></td>
+      <td><%= "#{number_to_currency(bid.amount)}" %></td>
+      <td><% if bid.status == "Losing Bid" %>
+              <%= link_to "Update Your Bid", item_path(bid.auction.item),{:class => "waves-effect waves-light btn"} %>
+          <% else %>
+              <%= bid.status %></td>
+          <% end %>
+    </tr>
     <% end %>
-<% end %>
-</ul>
+  </tbody>
+</table>
