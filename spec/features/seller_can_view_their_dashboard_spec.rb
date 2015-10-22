@@ -1,31 +1,11 @@
 require 'rails_helper'
 
 feature "seller can view store items" do
+  include_context "features"
 
   scenario "can see their own dashboard" do
-    user  = User.create(username: "alice",
-                        password: "password",
-                        full_name: "Alice Jones",
-                        address: "1500 Blake St., Denver, CO 80205",
-                        email: "alice@example.com",
-                        role: 2)
-
-    store_one = Store.create( title: "hats hats hats",
-                              description: "Never leave your head uncovered.",
-                              user_id: user.id)
-    store_two = Store.create( title: "handmade wallets",
-                              description: "Put your money here.",
-                              user_id: user.id)
-
-    visit root_path
-    click_link("Log In")
-    fill_in 'user[username]', with: "alice"
-    fill_in 'user[password]', with: "password"
-    within('#log-in') do
-      click_button('Log In')
-    end
-
-    expect(current_path).to eq seller_dashboard_path(user.username)
+    log_in_as("seller", "password")
+    expect(current_path).to eq ("/seller/dashboard")
     expect(page).to have_link("Hats Hats Hats")
     expect(page).to have_link("Handmade Wallets")
 
@@ -38,28 +18,8 @@ feature "seller can view store items" do
   end
 
   scenario "a seller cant see other sellers page" do
-    user  = User.new(username: "alice",
-                        password: "password",
-                        full_name: "Alice Jones",
-                        address: "1500 Blake St., Denver, CO 80205",
-                        email: "alice@example.com",
-                        role: 2)
-
-    other_seller = User.new(username: "bob",
-                               password: "password",
-                               full_name: "Bob Jones",
-                               address: "1500 Blake St., Denver, CO 80205",
-                               email: "bob@example.com",
-                               role: 2)
-
-    visit root_path
-    click_link("Log In")
-    fill_in 'user[username]', with: "bob"
-    fill_in 'user[password]', with: "password"
-    within('#log-in') do
-      click_button('Log In')
-    end
-    visit '/alice/dashboard'
+    log_in_as("bob", "password")
+    visit '/seller/dashboard'
     expect(current_path).to eq('/bob/dashboard')
   end
 

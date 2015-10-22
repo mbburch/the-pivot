@@ -36,6 +36,15 @@ shared_context "features" do
                 role: 2)
   end
 
+  let!(:other_seller) do
+    User.create(username: "bob",
+                password: "password",
+                full_name: "Bob Jones",
+                address: "1500 Blake St., Denver, CO 80205",
+                email: "bob@example.com",
+                role: 2)
+  end
+
   let!(:category) do
     Category.create(name: "Test Category")
   end
