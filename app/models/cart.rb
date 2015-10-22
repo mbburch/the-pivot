@@ -7,7 +7,7 @@ class Cart
   end
 
   def add_item(params)
-    item = {params[:item_id].to_i => params[:amount].to_i}
+    item = {params[:item_id] => params[:amount].to_i}
     @cart.merge(item) do |_key, old_val, new_val|
       (old_val.to_i + new_val.to_i).to_s
     end

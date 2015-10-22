@@ -9,23 +9,25 @@ class OrdersController < ApplicationController
   end
 
   def create
-    user_order = UserOrder.new(session, params)
-    @order = user_order.create_order
-    user_order.create_order_items
+    @order = Order.create_order(order_params, current_user, cart)
     session[:cart].clear
     flash[:notice] = "Order successful!"
     redirect_to order_path(@order.id)
   end
 
   def show
-    order = Order.find(params[:id])
-    if show_order?(order.user_id)
-      @order = order
-      @user = User.find(order.user_id)
-      item_quantity = ItemQuantities.new(order)
-      @item_quantities = item_quantity.item_quantities
+    #where are my items ids?
+    @order = Order.find(params[:id])
+    if @order
+      @user = User.find(@order.user_id)
     else
       render file: "/public/404"
     end
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:card_number, :card_expiration)
   end
 end

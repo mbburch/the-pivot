@@ -16,19 +16,19 @@
       <td><%= "#{number_to_currency(bid.auction.starting_price)}" %></td>
       <td><%= "#{number_to_currency(bid.auction.highest_bid)}" %></td>
       <td><%= "#{number_to_currency(bid.amount)}" %></td>
-      <td><% if bid.status == "Losing Bid" %>
+      <td><% if bid.losing? %>
             <%= link_to "Update Your Bid", item_path(bid.auction.item),{:class => "waves-effect waves-light btn"} %>
           <% else %>
             <%= bid.status %></td>
           <% end %>
-      <td><% if bid.auction.status == "closed" %>
+      <td><% if bid.winning? %>
             <%= form_for(:cart, url: cart_items_path) do |f| %>
               <%= f.hidden_field :item_id, value: bid.auction.item.id %>
               <%= f.hidden_field :amount, value: bid.amount %>
               <%= f.hidden_field :auction, value: bid.auction.id %>
               <%= f.submit "Pay" %>
             <% end %>
-          <% elsif bid.auction.status == "paid" %>Thank you!
+          <% elsif bid.auction.status == "paid" %>Paid!
           <% else %>
             <%= bid.auction.status %>
           <% end %>
