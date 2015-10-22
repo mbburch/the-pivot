@@ -77,7 +77,6 @@ feature "seller can create an auction" do
     select "00", from: "auction[ending_time(5i)]"
 
     click_on "Create Auction"
-    save_and_open_page
     expect(page).to have_content("Please make sure you have filled in all of the fields.")
     expect(current_path).to eq("/seller/auctions/new")
   end
