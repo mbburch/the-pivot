@@ -23,13 +23,6 @@ class Cart
     @cart
   end
 
-  def items
-    @cart.map do |key, quantity|
-      item = Item.find(key.to_i)
-      CartItem.new(item, quantity)
-    end
-  end
-
   def total
     cart.values.sum
   end

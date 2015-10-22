@@ -5,13 +5,13 @@
         <th data-field="price">Starting Price</th>
         <th data-field="high-bid">Current Highest Bid</th>
         <th data-field="your-bid">Your Current Bid</th>
-        <th data-field="status">Bid Status</th>
-        <th data-field="status">Auction Status</th>
+        <th data-field="bid-status">Bid Status</th>
+        <th data-field="auction-status">Auction Status</th>
     </tr>
   </thead>
   <tbody>
     <% current_user.bids.each do |bid| %>
-    <tr>
+    <tr class="<%=bid.auction.item.title.parameterize%>">
       <td><%= link_to bid.auction.item.title, item_path(bid.auction.item) %></td>
       <td><%= "#{number_to_currency(bid.auction.starting_price)}" %></td>
       <td><%= "#{number_to_currency(bid.auction.highest_bid)}" %></td>
