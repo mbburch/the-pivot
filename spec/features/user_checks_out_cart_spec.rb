@@ -17,6 +17,7 @@ feature "User checks out cart" do
     bidless_auction.save
     visit "/dashboard"
     click_button("Pay")
+
     page.find("#cart").click
     expect(current_path).to eq "/cart"
     click_link("Checkout")

@@ -2,7 +2,7 @@
   <h1 class="text-center">Create a New Auction</h1>
   <%= render partial: "layouts/flash" %>
   <div class="well col-sm-6 col-sm-offset-3">
-    <%= form_for :auction, :url => seller_auctions_path do |f| %>
+    <%= form_for :auction, url: seller_auctions_path, method: :post do |f| %>
     <div class="form-group">
       <%= f.label :store_id %>
       <%= f.collection_select :store_id, Store.where(user_id: @seller),
@@ -14,7 +14,7 @@
                               :id, :title,{}, { class: "form-control"} %>
     <div class="form-group">
       <%= f.label :starting_price %>
-      <%= f.text_field :starting_price, class: "form-control", value: "$" %>
+      <%= f.text_field :starting_price, class: "form-control" %>
     </div>
     <div class="form-group" id="start_time">
       <%= f.label :starting_time %>

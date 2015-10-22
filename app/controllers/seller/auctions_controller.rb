@@ -13,10 +13,12 @@ class Seller::AuctionsController < Seller::SellersController
     auction = Auction.create(auction_params.except(:store_id))
     if auction.save
       flash[:notice] = "Your auction is all set!"
+      redirect_to seller_dashboard_path
     else
-      flash[:notice] = "Please make sure you have filled in all of the fields."
+      flash[:notice] = auction.errors.full_messages.join(", ")
+      redirect_to :back
     end
-    redirect_to :back
+
   end
 
   private
