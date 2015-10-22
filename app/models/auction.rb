@@ -30,15 +30,6 @@ class Auction < ActiveRecord::Base
     end
   end
 
-  # def self.check_date
-  #   starting_time < ending_time
-  # end
-  #
-  # def self.cancel_bid
-  #   flash[:notice] = "Please select an end time later than start time."
-  #   redirect_to :back
-  # end
-
   def winner
     winner = bids.max_by do |bid|
       bid.amount
