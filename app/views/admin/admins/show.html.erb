@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
       <h1>Admin Dashboard</h1>
-      <p class="lead">Hello, <%= User.find(session[:user_id]).username.upcase %>!</p>
+      <p class="lead">Hello, <%= current_user.username.upcase %>!</p>
       <div id="admin-links" class="row col-md-10">
         <span class="btn btn-warning btn-md"><%= link_to "Edit My Profile", edit_path %></span>
         <span class="btn btn-primary btn-md"><%= link_to "View Auctions", admin_auctions_path %></span>
