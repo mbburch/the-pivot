@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "auctions#index"
 
-  resources :items, only: [:index, :show]
+  resources :items, only: [:show]
   resources :categories, only: [:show]
   resources :bids, only: [:new, :create]
   resources :orders, only: [:new, :create, :show]
