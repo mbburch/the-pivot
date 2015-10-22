@@ -68,7 +68,7 @@ feature "seller can create an auction" do
     expect(current_path).to eq("/seller/auctions/new")
 
     select "Hats Hats Hats", from: "auction[store_id]"
-    select "test title", from: "auction[item_id]"
+    select "fourth test title", from: "auction[item_id]"
     fill_in "auction[starting_price]", with: 26
     select "2015", from: "auction[starting_time(1i)]"
     select "October", from: "auction[starting_time(2i)]"
@@ -87,6 +87,6 @@ feature "seller can create an auction" do
     expect(current_path).to eq("/seller/auctions/new")
 
     visit "/seller/hats-hats-hats/auctions"
-    expect(page).to_not have_content("test title")
+    expect(page).to_not have_content("fourth test title")
   end
 end
