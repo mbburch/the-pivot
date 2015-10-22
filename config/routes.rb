@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, only: [:new, :create, :edit, :update]
+    resources :auctions, only: [:index, :destroy]
     resources :orders, only: [:update]
     get "/dashboard", to: "admins#show"
   end

@@ -3,6 +3,7 @@
   <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&fm=jpg&s=a4598570a3286ea23369fdefe46953ba" alt="" />
 </div>
 <div class="container">
+  <%= render partial: "layouts/flash" %>
   <div class="row"></div>
   <a name="anchor"></a>
   <div class="row items">
@@ -16,6 +17,7 @@
             <p><%= auction.item.description %></p>
             <p>Starting Price: <%= number_to_currency(auction.starting_price) %></p>
             <p>Current Bid: <%= number_to_currency(auction.item.current_bid) %></p>
+            <p><%= link_to "Delete Auction", admin_auction_path(auction), method: :delete, class: "btn btn-default" %></p>
           </div>
         </div>
       </div>
