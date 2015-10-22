@@ -1,9 +1,0 @@
-<div class="container">
-  <p class="lead"><%= link_to "Create Item", new_admin_item_path %></p>
-  <div class="row items">
-    <% @items.each do |item| %>
-      <%= render partial: "/layouts/tiny_item",
-                locals: { item: item, mode: :edit, path: request.path } %>
-    <% end %>
-  </div>
-</div>
