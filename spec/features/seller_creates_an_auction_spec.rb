@@ -27,6 +27,9 @@ feature "seller can create an auction" do
     click_on "Create Auction"
     expect(page).to have_content("Your auction is all set!")
     expect(current_path).to eq("/seller/dashboard")
+
+    visit "/seller/hats-hats-hats/auctions"
+    expect(page).to have_content("test title")
   end
 
   scenario "fails with missing attributes" do
@@ -36,7 +39,7 @@ feature "seller can create an auction" do
     expect(current_path).to eq("/seller/auctions/new")
 
     select "Hats Hats Hats", from: "auction[store_id]"
-    select "test title", from: "auction[item_id]"
+    select "fourth test title", from: "auction[item_id]"
     fill_in "auction[starting_price]", with: ""
     select "2015", from: "auction[starting_time(1i)]"
     select "October", from: "auction[starting_time(2i)]"
@@ -53,6 +56,9 @@ feature "seller can create an auction" do
     click_on "Create Auction"
     expect(page).to have_content("Starting price is not a number, Starting price can't be blank")
     expect(current_path).to eq("/seller/auctions/new")
+
+    visit "/seller/hats-hats-hats/auctions"
+    expect(page).to_not have_content("fourth test title")
   end
 
   scenario "fails if end date is before start date" do
@@ -79,5 +85,8 @@ feature "seller can create an auction" do
     click_on "Create Auction"
     expect(page).to have_content("Please make sure you have filled in all of the fields.")
     expect(current_path).to eq("/seller/auctions/new")
+
+    visit "/seller/hats-hats-hats/auctions"
+    expect(page).to_not have_content("test title")
   end
 end

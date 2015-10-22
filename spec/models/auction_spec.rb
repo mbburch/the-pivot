@@ -32,39 +32,33 @@ RSpec.describe Auction, type: :model do
     expect(Auction.open.count).to eq(1)
   end
 
-  xit "it knows auction_one status" do
-    expect(auction_one.status).to eq("open")
-    expect(auction_two.status).to eq("scheduled")
-    expect(ended_auction.status).to eq("ended")
+  it "it knows status" do
+    expect(auction_one.time_status).to eq("open")
+    expect(auction_two.time_status).to eq("scheduled")
+    expect(ended_auction.time_status).to eq("ended")
   end
 
-  xit "can be ended" do
-    expect(auction_one.status).to eq("open")
+  it "can be ended" do
+    expect(auction_one.time_status).to eq("open")
     auction_one.ending_time = Time.now - 1.minute
-    expect(auction_one.status).to eq("ended")
+    expect(auction_one.time_status).to eq("ended")
   end
 
-  xit "knows the final bid amount when ended" do
-    auction_one.bids << low_bid
-    expect(low_bid.status).to eq("Winning Bid")
-
-    auction_one.bids << higher_bid
-    expect(higher_bid.status).to eq("Winning Bid")
-
+  it "knows the final bid amount when ended" do
     auction_one.ending_time = Time.now - 1.minute
-    expect(auction_one.status).to eq("ended")
+    expect(auction_one.time_status).to eq("ended")
 
     expect(auction_one.highest_bid).to eq(201)
   end
 
-  xit "knows the winning user of the auction_one" do
-    expect(auction_one.status).to eq("open")
+  it "knows the winning user of the auction_one" do
+    expect(auction_one.time_status).to eq("open")
     auction_one.bids << bid
     auction_one.bids << higher_bid
     auction_one.bids << winning_bid
 
     auction_one.ending_time = Time.now - 1.minute
-    expect(auction_one.status).to eq("ended")
+    expect(auction_one.time_status).to eq("ended")
     expect(auction_one.highest_bid).to eq(400)
     expect(auction_one.winner).to eq(user_two)
   end
