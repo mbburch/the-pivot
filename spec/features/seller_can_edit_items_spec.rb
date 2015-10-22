@@ -12,7 +12,6 @@ feature "Seller can edit auction items" do
     expect(store2.items.flat_map(&:auctions)).to_not be_empty
 
     expect(current_path).to eq("/seller/hats-hats-hats/auctions")
-
     first(".caption").click_link("Edit Item Info")
     fill_in "item[title]", with: "updated title"
     fill_in "item[description]", with: "updated description"
