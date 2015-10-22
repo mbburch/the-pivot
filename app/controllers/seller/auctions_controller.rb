@@ -15,7 +15,7 @@ class Seller::AuctionsController < Seller::SellersController
       flash[:notice] = "Your auction is all set!"
       redirect_to seller_dashboard_path
     else
-      flash[:notice] = "Please make sure you have filled in all of the fields."
+      flash[:notice] = auction.errors.full_messages.join(", ")
       redirect_to :back
     end
 

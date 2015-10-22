@@ -51,7 +51,7 @@ feature "seller can create an auction" do
     select "00", from: "auction[ending_time(5i)]"
 
     click_on "Create Auction"
-    expect(page).to have_content("Please make sure you have filled in all of the fields.")
+    expect(page).to have_content("Starting price is not a number, Starting price can't be blank")
     expect(current_path).to eq("/seller/auctions/new")
   end
 
@@ -63,7 +63,7 @@ feature "seller can create an auction" do
 
     select "Hats Hats Hats", from: "auction[store_id]"
     select "test title", from: "auction[item_id]"
-    fill_in "auction[starting_price]", with: ""
+    fill_in "auction[starting_price]", with: 26
     select "2015", from: "auction[starting_time(1i)]"
     select "October", from: "auction[starting_time(2i)]"
     select "27", from: "auction[starting_time(3i)]"
@@ -77,6 +77,7 @@ feature "seller can create an auction" do
     select "00", from: "auction[ending_time(5i)]"
 
     click_on "Create Auction"
+    save_and_open_page
     expect(page).to have_content("Please make sure you have filled in all of the fields.")
     expect(current_path).to eq("/seller/auctions/new")
   end
