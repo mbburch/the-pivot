@@ -4,7 +4,7 @@ class AuctionsController < ApplicationController
       @auctions =Auction.search(params[:search]).order("created_at DESC")
       flash[:alert] = "We found the following results"
     else
-      @auctions = Auction.all
+      @auctions = Auction.where(status: "open")
     end
   end
 end

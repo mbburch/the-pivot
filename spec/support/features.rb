@@ -85,11 +85,11 @@ shared_context "features" do
   end
 
   let!(:bidless_auction) do
-    Auction.create(item: item, starting_price: 15)
+    Auction.create(item: item, starting_price: 15, status: "open")
   end
 
   let!(:auction) do
-    auction = Auction.create(item: other_item, starting_price: 15)
+    auction = Auction.create(item: other_item, starting_price: 15, status: "open")
   end
 
 
@@ -128,7 +128,7 @@ shared_context "features" do
   end
 
   let!(:bid) do
-    Bid.create(amount: 20, auction: auction, user: user)
+    Bid.create(amount: 20, auction: auction, user_id: user_two.id)
   end
 
   let!(:low_bid) do

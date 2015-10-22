@@ -7,7 +7,7 @@ class Cart
   end
 
   def add_item(params)
-    item = {params[:item_id].to_i => params[:amount].to_i}
+    item = {params[:item_id] => params[:amount].to_i}
     @cart.merge(item) do |_key, old_val, new_val|
       (old_val.to_i + new_val.to_i).to_s
     end
@@ -21,13 +21,6 @@ class Cart
 
   def data
     @cart
-  end
-
-  def items
-    @cart.map do |key, quantity|
-      item = Item.find(key.to_i)
-      CartItem.new(item, quantity)
-    end
   end
 
   def total

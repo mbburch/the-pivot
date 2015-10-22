@@ -5,30 +5,30 @@
         <th data-field="price">Starting Price</th>
         <th data-field="high-bid">Current Highest Bid</th>
         <th data-field="your-bid">Your Current Bid</th>
-        <th data-field="status">Bid Status</th>
-        <th data-field="status">Auction Status</th>
+        <th data-field="bid-status">Bid Status</th>
+        <th data-field="auction-status">Auction Status</th>
     </tr>
   </thead>
   <tbody>
     <% current_user.bids.each do |bid| %>
-    <tr>
+    <tr class="<%=bid.auction.item.title.parameterize%>">
       <td><%= link_to bid.auction.item.title, item_path(bid.auction.item) %></td>
       <td><%= "#{number_to_currency(bid.auction.starting_price)}" %></td>
       <td><%= "#{number_to_currency(bid.auction.highest_bid)}" %></td>
       <td><%= "#{number_to_currency(bid.amount)}" %></td>
-      <td><% if bid.status == "Losing Bid" %>
+      <td><% if bid.losing? %>
             <%= link_to "Update Your Bid", item_path(bid.auction.item),{:class => "waves-effect waves-light btn"} %>
           <% else %>
             <%= bid.status %></td>
           <% end %>
-      <td><% if bid.auction.status == "closed" %>
+      <td><% if bid.winning? %>
             <%= form_for(:cart, url: cart_items_path) do |f| %>
               <%= f.hidden_field :item_id, value: bid.auction.item.id %>
               <%= f.hidden_field :amount, value: bid.amount %>
               <%= f.hidden_field :auction, value: bid.auction.id %>
               <%= f.submit "Pay" %>
             <% end %>
-          <% elsif bid.auction.status == "paid" %>Thank you!
+          <% elsif bid.auction.status == "paid" %>Paid!
           <% else %>
             <%= bid.auction.status %>
           <% end %>

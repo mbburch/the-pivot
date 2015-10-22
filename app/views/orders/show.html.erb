@@ -4,16 +4,14 @@
     <thead>
       <tr>
         <th>Item Title</th>
-        <th>Amount Paid</th>
         <th>Subtotal</th>
       </tr>
     </thead>
     <tbody>
-      <% @item_quantities.each do |item, quantity| %>
+      <% @items.each do |item| %>
         <tr>
           <td><%= item.title %></td>
-          <td><%= quantity %></td>
-          <td><%= number_to_currency(quantity * item.price) %></td>
+          <td><%= number_to_currency(item.current_bid) %></td>
         </tr>
       <% end %>
     </tbody>

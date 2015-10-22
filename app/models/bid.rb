@@ -21,4 +21,20 @@ class Bid < ActiveRecord::Base
       status = "Losing Bid"
     end
   end
+
+  def losing?
+    status == "Losing Bid" && auction_open?
+  end
+
+  def auction_open?
+    auction.status == "open"
+  end
+
+  def winning?
+    status == "Winning Bid" && auction_closed?
+  end
+
+  def auction_closed?
+    auction.status == "closed"
+  end
 end
