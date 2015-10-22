@@ -77,6 +77,13 @@ shared_context "features" do
                 category: third_category)
   end
 
+  let!(:fourth_item) do
+    Item.create(title: "fourth test title",
+                description: "fourth test description",
+                store: store1,
+                category: category)
+  end
+
   let!(:bidless_auction) do
     Auction.create(item: item, starting_price: 15)
   end

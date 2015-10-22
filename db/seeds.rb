@@ -134,7 +134,7 @@ class Seed
       item = Item.create!(
         title:       "#{Faker::Commerce.product_name} #{i}",
         description: Faker::Lorem.paragraph,
-        # avatar:      open(avatars.shuffle[rand]),
+        avatar:      open(avatars.shuffle[rand]),
         category_id: assign_category(i),
         store_id:    Store.find(Random.new.rand(1..20)).id
         )
