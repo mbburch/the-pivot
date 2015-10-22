@@ -78,7 +78,7 @@ shared_context "features" do
   end
 
   let!(:bidless_auction) do
-    Auction.create(item: item, starting_price: 15)
+    Auction.create(item: item, starting_price: 15, status: "open")
   end
 
   let!(:auction) do
